@@ -9,4 +9,53 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroudInput">#F2F2F2</color>
     <color name="textGray">#747476</color>
+
+    <!-- BackGrounds for Type -->
+    <color name="bkgTypeBug">#8BD674</color>
+    <color name="bkgTypeDark">#6F6E78</color>
+    <color name="bkgTypeDragon">#7383B9</color>
+    <color name="bkgTypeElectric">#F2CB55</color>
+    <color name="bkgTypeFairy">#EBA8C3</color>
+    <color name="bkgTypeFighting">#EB4971</color>
+    <color name="bkgTypeFire">#FFA756</color>
+    <color name="bkgTypeFlying">#83A2E3</color>
+    <color name="bkgTypeGhost">#8571BE</color>
+    <color name="bkgTypeGrass">#8BBE8A</color>
+    <color name="bkgTypeGround">#F78551</color>
+    <color name="bkgTypeIce">#91D8DF</color>
+    <color name="bkgTypeNormal">#B5B9C4</color>
+    <color name="bkgTypePosition">#9F6E97</color>
+    <color name="bkgTypePsychic">#FF6568</color>
+    <color name="bkgTypeRock">#D4C294</color>
+    <color name="bkgTypeSteel">#4C91B2</color>
+    <color name="bkgTypeWater">#58ABF6</color>
+
+    <!-- Type Color -->
+    <color name="typeBug">#8CB230</color>
+    <color name="typeDark">#58575F</color>
+    <color name="typeDragon">#0F6AC0</color>
+    <color name="typeElectric">#EED535</color>
+    <color name="typeFairy">#ED6EC7</color>
+    <color name="typeFighting">#D04164</color>
+    <color name="typeFire">#FD7D24</color>
+    <color name="typeFlying">#748FC9</color>
+    <color name="typeGhost">#556AAE</color>
+    <color name="typeGrass">#62B957</color>
+    <color name="typeGround">#DD7748</color>
+    <color name="typeIce">#61CEC0</color>
+    <color name="typeNormal">#9DA0AA</color>
+    <color name="typePosition">#A552CC</color>
+    <color name="typePsychic">#EA5D60</color>
+    <color name="typeRock">#BAAB82</color>
+    <color name="typeSteel">#417D9A</color>
+    <color name="typeWater">#4A90DA</color>
+
+    <!-- Height and Weight Color -->
+    <color name="heightShort">#8CB230</color>
+    <color name="heightMedium">#58575F</color>
+    <color name="heightTall">#0F6AC0</color>
+    <color name="weightLight">#EED535</color>
+    <color name="weightNormal">#ED6EC7</color>
+    <color name="weightHeavy">#D04164</color>
+
 </resources>
