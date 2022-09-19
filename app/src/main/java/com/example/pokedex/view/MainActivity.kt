@@ -1,10 +1,11 @@
-package com.example.pokedex
+package com.example.pokedex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.pokedex.R
 import com.example.pokedex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
