@@ -24,7 +24,7 @@
     <color name="bkgTypeGround">#F78551</color>
     <color name="bkgTypeIce">#91D8DF</color>
     <color name="bkgTypeNormal">#B5B9C4</color>
-    <color name="bkgTypePosition">#9F6E97</color>
+    <color name="bkgTypePoison">#9F6E97</color>
     <color name="bkgTypePsychic">#FF6568</color>
     <color name="bkgTypeRock">#D4C294</color>
     <color name="bkgTypeSteel">#4C91B2</color>
@@ -44,7 +44,7 @@
     <color name="typeGround">#DD7748</color>
     <color name="typeIce">#61CEC0</color>
     <color name="typeNormal">#9DA0AA</color>
-    <color name="typePosition">#A552CC</color>
+    <color name="typePoison">#A552CC</color>
     <color name="typePsychic">#EA5D60</color>
     <color name="typeRock">#BAAB82</color>
     <color name="typeSteel">#417D9A</color>

@@ -13,8 +13,9 @@ class ListPokeViewModel:ViewModel() {
     fun getListPokes(){
         var pokeList:MutableList<Pokemon> = mutableListOf()
         val poke:Pokemon = Pokemon().apply {
-            this.id = 1
-            this.name = "teste"
+            this.id = 11
+            this.name = "Grass"
+            this.types = mutableListOf("Grass","Poison")
         }
         pokeList.add(poke)
         _pokemon.value =pokeList

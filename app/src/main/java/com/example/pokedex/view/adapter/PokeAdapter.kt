@@ -12,7 +12,7 @@ class PokeAdapter:RecyclerView.Adapter<PokeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemBinding = RowPokemonListBinding.inflate(inflater,parent,false)
-        return PokeViewHolder(itemBinding)
+        return PokeViewHolder(itemBinding,parent.context)
     }
 
     override fun onBindViewHolder(holder: PokeViewHolder, position: Int) {

@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/purple_200"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_bkg_card"
-        android:layout_width="334dp"
+        android:layout_width="match_parent"
         android:layout_height="115dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="25dp"
         android:padding="8dp"
-        android:background="@color/bkgTypeGrass"
+        android:background="@drawable/bkg_style_rounded_type"
+        android:backgroundTint="@color/bkgTypeGrass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="74dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="39dp"
-            android:src="@drawable/detail_card"
-            app:layout_constraintStart_toEndOf="@id/text_poke_number"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/text_poke_name"
@@ -45,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Bulbasaur"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,13 +47,15 @@
 
         <TextView
             android:id="@+id/type_one"
-            android:layout_width="61dp"
+            android:layout_width="73dp"
             android:layout_height="25dp"
-            android:background="@color/typeGrass"
+            android:background="@drawable/style_rounded_type"
+            android:backgroundTint="@color/typeGrass"
             android:drawableStart="@drawable/ic_grass"
+            android:drawablePadding="4dp"
             android:layout_marginTop="4dp"
-            android:padding="5dp"
-            android:text=" Grass"
+            android:padding="4dp"
+            android:text="Fighting"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/text_poke_name"
@@ -67,14 +63,16 @@
 
         <TextView
             android:id="@+id/type_two"
-            android:layout_width="61dp"
+            android:layout_width="73dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:background="@color/typePosition"
+            android:backgroundTint="@color/typePoison"
+            android:background="@drawable/style_rounded_type"
             android:drawableStart="@drawable/ic_poison"
+            android:drawablePadding="4dp"
             android:layout_marginTop="4dp"
-            android:padding="5dp"
-            android:text=" Grass"
+            android:padding="4dp"
+            android:text="Grass"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/type_one"
@@ -84,20 +82,27 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
+        android:layout_width="74dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/detail_card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
         android:id="@+id/img_poke_image"
-        android:layout_width="145dp"
-        android:layout_height="110dp"
+        android:layout_width="124dp"
+        android:layout_height="130dp"
         android:src="@drawable/ic_pokeball"
-        android:layout_marginEnd="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="130dp"
         android:src="@drawable/poke_01"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
