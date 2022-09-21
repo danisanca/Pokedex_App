@@ -2,16 +2,16 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class Training {
+class TrainingModel {
 
     @SerializedName("evYield")
     var evYield:String =""
 
     @SerializedName("catchRate")
-    var catchRate:CatchRate = CatchRate()
+    var catchRateModel:CatchRateModel = CatchRateModel()
 
     @SerializedName("baseFriendship")
-    var baseFriendship:BaseFriendship = BaseFriendship()
+    var baseFriendshipModel:BaseFriendshipModel = BaseFriendshipModel()
 
     @SerializedName("baseExp")
     var baseExp:Int = 0

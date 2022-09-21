@@ -2,7 +2,7 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class BaseStats {
+class BaseStatusModel {
 
     @SerializedName("hp")
     var hp:List<Int> = mutableListOf()

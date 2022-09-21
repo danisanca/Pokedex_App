@@ -2,10 +2,10 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class BaseFriendship {
+class BaseFriendshipModel {
 
     @SerializedName("value")
-    var value:Int = 0
+    var value:Float = 0f
 
     @SerializedName("text")
     var text:String = ""

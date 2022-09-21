@@ -3,22 +3,32 @@ package com.example.pokedex.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pokedex.service.model.Pokemon
+import com.example.pokedex.service.listener.APIListener
+import com.example.pokedex.service.model.PokemonModel
+import com.example.pokedex.service.repository.PokemonRepository
 
 class ListPokeViewModel:ViewModel() {
 
-    private val _pokemon = MutableLiveData<List<Pokemon>>()
-    val pokemon:LiveData<List<Pokemon>> = _pokemon
+    private val pokemonRepository = PokemonRepository()
 
-    fun getListPokes(){
-        var pokeList:MutableList<Pokemon> = mutableListOf()
-        val poke:Pokemon = Pokemon().apply {
-            this.id = 11
-            this.name = "Grass"
-            this.types = mutableListOf("Grass","Poison")
-        }
-        pokeList.add(poke)
-        _pokemon.value =pokeList
+    private val _pokemonModel = MutableLiveData<List<PokemonModel>>()
+    val pokemonModel:LiveData<List<PokemonModel>> = _pokemonModel
+
+    private val _statusMsg = MutableLiveData<String>()
+    val statusMsg:LiveData<String> = _statusMsg
+
+    fun listPokes(){
+       pokemonRepository.list(object : APIListener<List<PokemonModel>>{
+           override fun onSuccess(result: List<PokemonModel>) {
+               _pokemonModel.value = result
+           }
+
+           override fun onFailure(message: String) {
+               _statusMsg.value = message
+           }
+
+       })
+
     }
 
 }

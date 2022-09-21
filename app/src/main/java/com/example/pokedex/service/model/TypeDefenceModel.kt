@@ -2,61 +2,61 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class TypeDefence {
+class TypeDefenceModel {
 
     @SerializedName("normal")
-    var normal:Int? = null
+    var normal:Float? = null
 
     @SerializedName("fire")
-    var fire:Int? = null
+    var fire:Float? = null
 
     @SerializedName("water")
-    var water:Int? = null
+    var water:Float? = null
 
     @SerializedName("electric")
-    var electric:Int? = null
+    var electric:Float? = null
 
     @SerializedName("grass")
-    var grass:Int? = null
+    var grass:Float? = null
 
     @SerializedName("ice")
-    var ice:Int? = null
+    var ice:Float? = null
 
     @SerializedName("fighting")
-    var fighting:Int? = null
+    var fighting:Float? = null
 
     @SerializedName("poison")
-    var poison:Int? = null
+    var poison:Float? = null
 
     @SerializedName("ground")
-    var ground:Int? = null
+    var ground:Float? = null
 
     @SerializedName("flying")
-    var flying:Int? = null
+    var flying:Float? = null
 
     @SerializedName("psychic")
-    var psychic:Int? = null
+    var psychic:Float? = null
 
     @SerializedName("bug")
-    var bug:Int? = null
+    var bug:Float? = null
 
     @SerializedName("rock")
-    var rock:Int? = null
+    var rock:Float? = null
 
     @SerializedName("ghost")
-    var ghost:Int? = null
+    var ghost:Float? = null
 
     @SerializedName("dragon")
-    var dragon:Int? = null
+    var dragon:Float? = null
 
     @SerializedName("darl")
-    var dark:Int? = null
+    var dark:Float? = null
 
     @SerializedName("steel")
-    var steel:Int? = null
+    var steel:Float? = null
 
     @SerializedName("fairy")
-    var fairy:Int? = null
+    var fairy:Float? = null
 
 
 }

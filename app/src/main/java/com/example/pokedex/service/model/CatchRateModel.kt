@@ -2,11 +2,12 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class Gender {
+class CatchRateModel {
 
-    @SerializedName("male")
+    @SerializedName("value")
     var value:Int = 0
 
-    @SerializedName("female")
-    var text:Int = 0
+    @SerializedName("text")
+    var text:String = ""
+
 }

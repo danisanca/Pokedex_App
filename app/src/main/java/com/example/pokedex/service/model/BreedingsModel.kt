@@ -2,15 +2,15 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class Breedings {
+class BreedingsModel {
 
     @SerializedName("eggGroups")
     var eggGroups:List<String> = mutableListOf()
 
     @SerializedName("gender")
-    var gender:Gender = Gender()
+    var genderModel:GenderModel = GenderModel()
 
     @SerializedName("eggCycles")
-    var eggCycles:EggCycle = EggCycle()
+    var eggCyclesModel:EggCycleModel = EggCycleModel()
 
 }

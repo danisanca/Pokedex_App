@@ -1,24 +1,25 @@
 package com.example.pokedex.view.viewholdel
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.pokedex.R
 import com.example.pokedex.databinding.RowPokemonListBinding
-import com.example.pokedex.service.model.Pokemon
+import com.example.pokedex.service.model.PokemonModel
+import java.util.*
 
 class PokeViewHolder (private val binding:RowPokemonListBinding,private val context: Context):RecyclerView.ViewHolder(binding.root){
-    fun bindData(poke:Pokemon){
+    fun bindData(poke:PokemonModel){
+
+
 
         changeNumber(poke.id)
-        binding.textPokeName.text = poke.name
+        binding.textPokeName.text = poke.name.replaceFirstChar { it.uppercase() }
         changeNameType(poke.types)
         changeColor(poke.types)
-//        binding.typeOne.text = "Grass"
-//        binding.typeTwo.text = "Grass"
+        binding.imgPoke.load(poke.image)
 
 
     }
@@ -38,10 +39,10 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
         val sizeList = types.size
 
         if(sizeList == 2){
-            binding.typeOne.text = types[0]
-            binding.typeTwo.text = types[1]
+            binding.typeOne.text = types[0].replaceFirstChar { it.uppercase() }
+            binding.typeTwo.text = types[1].replaceFirstChar { it.uppercase() }
         }else{
-            binding.typeOne.text = types[0]
+            binding.typeOne.text = types[0].replaceFirstChar { it.uppercase() }
         }
     }
 
@@ -55,59 +56,61 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
             colorTwo = types[1]
             binding.typeOne.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorOne))
             binding.typeTwo.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorTwo))
+            binding.typeTwo.isVisible = true
         }else{
             colorOne = types[0]
             binding.typeOne.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorOne))
-            binding.typeTwo.isVisible = false
+           binding.typeTwo.isVisible = false
         }
+
         binding.constBkgCard.backgroundTintList = ContextCompat.getColorStateList(context, backgroundTypeColor(colorOne))
 
     }
 
     fun typeColor(color:String): Int {
        when(color){
-           "Bug" -> return R.color.typeBug
-           "Dark" -> return R.color.typeDark
-           "Dragon" -> return R.color.typeDragon
-           "Electric" -> return R.color.typeElectric
-           "Fairy" -> return R.color.typeFairy
-           "Fighting" -> return R.color.typeFighting
-           "Fire" -> return R.color.typeFire
-           "Flying" -> return R.color.typeFlying
-           "Ghost" -> return R.color.typeGhost
-           "Grass" -> return R.color.typeGrass
-           "Ground" -> return R.color.typeGround
-           "Ice" -> return R.color.typeIce
-           "Normal" -> return R.color.typeNormal
-           "Poison" -> return R.color.typePoison
-           "Psychic" -> return R.color.typePsychic
-           "Rock" -> return R.color.typeRock
-           "Steel" -> return R.color.typeSteel
-           "Water" -> return R.color.typeWater
-           else -> return R.color.white
+           "bug" -> return R.color.typeBug
+           "dark" -> return R.color.typeDark
+           "dragon" -> return R.color.typeDragon
+           "electric" -> return R.color.typeElectric
+           "fairy" -> return R.color.typeFairy
+           "fighting" -> return R.color.typeFighting
+           "fire" -> return R.color.typeFire
+           "flying" -> return R.color.typeFlying
+           "ghost" -> return R.color.typeGhost
+           "grass" -> return R.color.typeGrass
+           "ground" -> return R.color.typeGround
+           "ice" -> return R.color.typeIce
+           "normal" -> return R.color.typeNormal
+           "poison" -> return R.color.typePoison
+           "psychic" -> return R.color.typePsychic
+           "rock" -> return R.color.typeRock
+           "steel" -> return R.color.typeSteel
+           "water" -> return R.color.typeWater
+           else -> return R.color.teal_200
        }
     }
     fun backgroundTypeColor(color:String): Int {
         when(color){
-            "Bug" -> return R.color.bkgTypeBug
-            "Dark" -> return R.color.bkgTypeDark
-            "Dragon" -> return R.color.bkgTypeDragon
-            "Electric" -> return R.color.bkgTypeElectric
-            "Fairy" -> return R.color.bkgTypeFairy
-            "Fighting" -> return R.color.bkgTypeFighting
-            "Fire" -> return R.color.bkgTypeFire
-            "Flying" -> return R.color.bkgTypeFlying
-            "Ghost" -> return R.color.bkgTypeGhost
-            "Grass" -> return R.color.bkgTypeGrass
-            "Ground" -> return R.color.bkgTypeGround
-            "Ice" -> return R.color.bkgTypeIce
-            "Normal" -> return R.color.bkgTypeNormal
-            "Poison" -> return R.color.bkgTypePoison
-            "Psychic" -> return R.color.bkgTypePsychic
-            "Rock" -> return R.color.bkgTypeRock
-            "Steel" -> return R.color.bkgTypeSteel
-            "Water" -> return R.color.bkgTypeWater
-            else -> return R.color.white
+            "bug" -> return R.color.bkgTypeBug
+            "dark" -> return R.color.bkgTypeDark
+            "dragon" -> return R.color.bkgTypeDragon
+            "electric" -> return R.color.bkgTypeElectric
+            "fairy" -> return R.color.bkgTypeFairy
+            "fighting" -> return R.color.bkgTypeFighting
+            "fire" -> return R.color.bkgTypeFire
+            "flying" -> return R.color.bkgTypeFlying
+            "ghost" -> return R.color.bkgTypeGhost
+            "grass" -> return R.color.bkgTypeGrass
+            "ground" -> return R.color.bkgTypeGround
+            "ice" -> return R.color.bkgTypeIce
+            "normal" -> return R.color.bkgTypeNormal
+            "poison" -> return R.color.bkgTypePoison
+            "psychic" -> return R.color.bkgTypePsychic
+            "rock" -> return R.color.bkgTypeRock
+            "steel" -> return R.color.bkgTypeSteel
+            "water" -> return R.color.bkgTypeWater
+            else -> return R.color.teal_200
         }
     }
 

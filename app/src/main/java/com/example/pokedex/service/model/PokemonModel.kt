@@ -2,7 +2,7 @@ package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class Pokemon {
+class PokemonModel {
 
     @SerializedName("id")
     var id:Int = 0
@@ -17,10 +17,10 @@ class Pokemon {
     var description:String = ""
 
     @SerializedName("height")
-    var height:Int = 0
+    var height:Float = 0f
 
     @SerializedName("weight")
-    var weight:Int = 0
+    var weight:Float = 0f
 
     @SerializedName("species")
     var species:String = ""
@@ -29,15 +29,19 @@ class Pokemon {
     var types:List<String> = mutableListOf()
 
     @SerializedName("training")
-    var training:Training = Training()
+    var trainingModel:TrainingModel = TrainingModel()
 
     @SerializedName("breedings")
-    var breeding:Breedings = Breedings()
+    var breeding:BreedingsModel = BreedingsModel()
 
     @SerializedName("baseStats")
-    var baseStats:BaseStats = BaseStats()
+    var baseStatusModel:BaseStatusModel = BaseStatusModel()
 
     @SerializedName("typeDefences")
-    var typeDefences:TypeDefence = TypeDefence()
+    var typeDefencesModel:TypeDefenceModel = TypeDefenceModel()
+
+    override fun toString(): String {
+        return "PokemonModel:\n id=$id, \n name='$name', \n image='$image', \n description='$description', \n height=$height, \nweight=$weight, \n species='$species', \n types=$types, \n training=$trainingModel, \n breeding=$breeding, \n baseStats=$baseStatusModel, \n typeDefences=$typeDefencesModel"
+    }
 
 }
