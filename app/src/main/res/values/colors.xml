@@ -51,11 +51,5 @@
     <color name="typeWater">#4A90DA</color>
 
     <!-- Height and Weight Color -->
-    <color name="heightShort">#8CB230</color>
-    <color name="heightMedium">#58575F</color>
-    <color name="heightTall">#0F6AC0</color>
-    <color name="weightLight">#EED535</color>
-    <color name="weightNormal">#ED6EC7</color>
-    <color name="weightHeavy">#D04164</color>
 
 </resources>

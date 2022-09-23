@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_bkg_card"
+        android:id="@+id/constBkgCard"
         android:layout_width="match_parent"
         android:layout_height="115dp"
         android:layout_marginBottom="5dp"
@@ -62,8 +62,8 @@
             app:layout_constraintTop_toBottomOf="@id/text_poke_name" />
 
         <TextView
-            android:visibility="invisible"
             android:id="@+id/type_two"
+            android:visibility="invisible"
             android:layout_width="73dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
-        android:id="@+id/img_pokeball"
+        android:id="@+id/img_poke"
         android:layout_width="124dp"
         android:layout_height="130dp"
         android:src="@drawable/ic_pokeball"
@@ -100,7 +100,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/img_poke"
         android:layout_width="wrap_content"
         android:layout_height="130dp"
         android:src="@drawable/ic_baseline_downloading"

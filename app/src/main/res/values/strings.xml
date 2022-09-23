@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Pokedex</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_fragment_list">Pokédex</string>
     <string name="subtitle_fragment_list">Search for Pokémon by name or using the \nNational Pokédex number.</string>
     <string name="edit_fragment_list">What Pokémon are you looking for?</string>
+    <string name="tab_text_1">About</string>
+    <string name="tab_text_2">Status</string>
 </resources>
