@@ -35,10 +35,7 @@ class AboutFragment : Fragment() {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.sectionLabel
-        aboutViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 

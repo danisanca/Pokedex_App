@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentListPokeBinding
+import com.example.pokedex.service.listener.PokeListner
 import com.example.pokedex.view.adapter.PokeAdapter
 import com.example.pokedex.viewmodel.ListPokeViewModel
 
@@ -33,6 +34,14 @@ class ListPokeFragment : Fragment(),View.OnClickListener {
         binding.btnGeneration.setOnClickListener(this)
 
         observers()
+
+        val listener = object : PokeListner{
+            override fun onListClick(id: Int) {
+                println(id)
+            }
+        }
+
+        adapter.attachListener(listener)
 
         return binding.root
     }

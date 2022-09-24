@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.pokedex.R
 import com.example.pokedex.databinding.RowPokemonListBinding
+import com.example.pokedex.service.listener.PokeListner
 import com.example.pokedex.service.model.PokemonModel
 import java.util.*
 
-class PokeViewHolder (private val binding:RowPokemonListBinding,private val context: Context):RecyclerView.ViewHolder(binding.root){
+class PokeViewHolder (private val binding:RowPokemonListBinding,private val context: Context,val listner: PokeListner):RecyclerView.ViewHolder(binding.root){
     fun bindData(poke:PokemonModel){
 
 
@@ -21,6 +22,11 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
         changeColor(poke.types)
         binding.imgPoke.load(poke.image)
 
+        // - Eventos
+
+        binding.imgPoke.setOnClickListener{
+            listner
+        }
 
     }
 
@@ -35,6 +41,7 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
         }
 
     }
+
     fun changeNameType(types:List<String>){
         val sizeList = types.size
 
@@ -90,6 +97,7 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
            else -> return R.color.teal_200
        }
     }
+
     fun backgroundTypeColor(color:String): Int {
         when(color){
             "bug" -> return R.color.bkgTypeBug
@@ -113,5 +121,6 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
             else -> return R.color.teal_200
         }
     }
+
 
 }

@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroudInput">#F2F2F2</color>
     <color name="textGray">#747476</color>
+    <color name="textBlack">#17171B</color>
 
     <!-- BackGrounds for Type -->
     <color name="bkgTypeBug">#8BD674</color>

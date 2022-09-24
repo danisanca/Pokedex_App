@@ -13,7 +13,7 @@ import retrofit2.Response
 class PokemonRepository() {
     private val remote = RetrofitClient.getService(PokemonService::class.java)
 
-    fun list(listner:APIListener<List<PokemonModel>>){
+     fun list(listner:APIListener<List<PokemonModel>>){
         val call = remote.list()
         call.enqueue(object : Callback<List<PokemonModel>>{
             override fun onResponse(call: Call<List<PokemonModel>>,response: Response<List<PokemonModel>>) {
