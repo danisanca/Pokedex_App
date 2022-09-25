@@ -30,6 +30,7 @@ class PokeAdapter : RecyclerView.Adapter<PokeViewHolder>() {
         listPokes = list
         notifyDataSetChanged()
     }
+
     fun attachListener(pokeListener: PokeListner) {
         listener = pokeListener
     }

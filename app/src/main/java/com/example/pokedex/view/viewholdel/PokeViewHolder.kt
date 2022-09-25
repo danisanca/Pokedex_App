@@ -1,6 +1,7 @@
 package com.example.pokedex.view.viewholdel
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +12,10 @@ import com.example.pokedex.service.listener.PokeListner
 import com.example.pokedex.service.model.PokemonModel
 import java.util.*
 
-class PokeViewHolder (private val binding:RowPokemonListBinding,private val context: Context,val listner: PokeListner):RecyclerView.ViewHolder(binding.root){
+class PokeViewHolder (private val binding: RowPokemonListBinding, private val context: Context, val listner: PokeListner):RecyclerView.ViewHolder(binding.root){
     fun bindData(poke:PokemonModel){
 
-
-
+        println(poke)
         changeNumber(poke.id)
         binding.textPokeName.text = poke.name.replaceFirstChar { it.uppercase() }
         changeNameType(poke.types)
@@ -25,7 +25,7 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
         // - Eventos
 
         binding.imgPoke.setOnClickListener{
-            listner
+            listner.onListClick(poke)
         }
 
     }
@@ -64,14 +64,41 @@ class PokeViewHolder (private val binding:RowPokemonListBinding,private val cont
             binding.typeOne.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorOne))
             binding.typeTwo.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorTwo))
             binding.typeTwo.isVisible = true
+            binding.typeOne.setCompoundDrawablesWithIntrinsicBounds(typeIcon(colorOne),0,0,0)
+            binding.typeTwo.setCompoundDrawablesWithIntrinsicBounds(typeIcon(colorTwo),0,0,0)
         }else{
             colorOne = types[0]
             binding.typeOne.backgroundTintList = ContextCompat.getColorStateList(context, typeColor(colorOne))
-           binding.typeTwo.isVisible = false
+            binding.typeOne.setCompoundDrawablesWithIntrinsicBounds(typeIcon(colorOne),0,0,0)
+             binding.typeTwo.isVisible = false
         }
 
         binding.constBkgCard.backgroundTintList = ContextCompat.getColorStateList(context, backgroundTypeColor(colorOne))
 
+    }
+
+    fun typeIcon(color:String):Int {
+        when(color){
+            "bug" -> return R.drawable.ic_bug_effect
+            "dark" -> return R.drawable.ic_dark_effect
+            "dragon" -> return R.drawable.ic_dragon_effect
+            "electric" -> return R.drawable.ic_electric_effect
+            "fairy" -> return R.drawable.ic_fairy_effect
+            "fighting" -> return R.drawable.ic_fighting_effect
+            "fire" -> return R.drawable.ic_fire_effect
+            "flying" -> return R.drawable.ic_flying_effect
+            "ghost" -> return R.drawable.ic_ghost_effect
+            "grass" -> return R.drawable.ic_grass_effect
+            "ground" -> return R.drawable.ic_ground_effect
+            "ice" -> return R.drawable.ic_ice_effect
+            "normal" -> return R.drawable.ic_normal_effect
+            "poison" -> return R.drawable.ic_poison
+            "psychic" -> return R.drawable.ic_psychic_effect
+            "rock" -> return R.drawable.ic_rock_effect
+            "steel" -> return R.drawable.ic_steel_effect
+            "water" -> return R.drawable.ic_water_effect
+            else -> return R.color.teal_200
+        }
     }
 
     fun typeColor(color:String): Int {

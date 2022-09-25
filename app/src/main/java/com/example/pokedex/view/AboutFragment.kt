@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.databinding.FragmentAboutBinding
+import com.example.pokedex.service.model.PokemonModel
 import com.example.pokedex.viewmodel.AboutViewModel
 
 
@@ -27,29 +28,28 @@ class AboutFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
-        val root = binding.root
+
+        println("Resultado: $poke")
 
 
-        return root
+        return binding.root
     }
 
     companion object {
 
         private const val ARG_SECTION_NUMBER = "section_number"
-
+        private var poke:PokemonModel = PokemonModel()
         @JvmStatic
-        fun newInstance(sectionNumber: Int): AboutFragment {
+        fun newInstance(sectionNumber: Int,objPoke:PokemonModel): AboutFragment {
 
             return AboutFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
+                poke = objPoke
             }
         }
     }

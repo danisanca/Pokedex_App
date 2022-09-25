@@ -1,7 +1,9 @@
 package com.example.pokedex.service.listener
 
+import com.example.pokedex.service.model.PokemonModel
+
 interface PokeListner {
 
-    fun onListClick(id:Int)
+    fun onListClick(objPoke:PokemonModel)
 
 }

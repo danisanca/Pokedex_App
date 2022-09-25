@@ -8,4 +8,6 @@ interface PokemonService {
     @GET(".")
     fun list(): Call<List<PokemonModel>>
 
+
+
 }

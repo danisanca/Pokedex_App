@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.databinding.FragmentStatusBinding
+import com.example.pokedex.service.model.PokemonModel
 import com.example.pokedex.viewmodel.StatusViewModel
 
 
@@ -42,14 +43,15 @@ class StatusFragment : Fragment() {
     companion object {
 
         private const val ARG_SECTION_NUMBER = "section_number"
-
+        private var poke: PokemonModel = PokemonModel()
         @JvmStatic
-        fun newInstance(sectionNumber: Int): StatusFragment {
+        fun newInstance(sectionNumber: Int,objPoke:PokemonModel): StatusFragment {
 
             return StatusFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
+                poke = objPoke
             }
         }
     }

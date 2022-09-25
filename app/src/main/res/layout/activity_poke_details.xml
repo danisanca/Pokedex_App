@@ -42,11 +42,11 @@
 
                 <ImageView
                     android:id="@+id/img_poke_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/poke_01"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,16 @@
                     app:layout_constraintStart_toEndOf="@+id/img_poke_details"
                     app:layout_constraintTop_toTopOf="@+id/img_poke_details" />
 
-
+                <ImageView
+                    android:id="@+id/img_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/details2_card"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/type_two_details" />
 
                 <TextView
                     android:id="@+id/text_poke_name_details"
@@ -79,7 +88,7 @@
 
                 <TextView
                     android:id="@+id/type_one_details"
-                    android:layout_width="73dp"
+                    android:layout_width="85dp"
                     android:layout_height="25dp"
                     android:background="@drawable/style_rounded_type"
                     android:backgroundTint="@color/typeGrass"
@@ -96,14 +105,14 @@
                 <TextView
                     android:id="@+id/type_two_details"
                     android:visibility="invisible"
-                    android:layout_width="73dp"
+                    android:layout_width="85dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/typePoison"
                     android:background="@drawable/style_rounded_type"
                     android:drawableStart="@drawable/ic_poison_effect"
-                    android:drawablePadding="4dp"
                     android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
                     android:padding="4dp"
                     android:text="Grass"
                     android:textColor="@color/white"
@@ -111,16 +120,7 @@
                     app:layout_constraintStart_toEndOf="@id/type_one_details"
                     app:layout_constraintTop_toBottomOf="@id/text_poke_name_details" />
 
-                <ImageView
-                    android:id="@+id/img_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/details2_card"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/type_two_details" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

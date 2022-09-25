@@ -1,8 +1,10 @@
 package com.example.pokedex.service.model
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
-class PokemonModel {
+
+class PokemonModel  {
 
     @SerializedName("id")
     var id:Int = 0

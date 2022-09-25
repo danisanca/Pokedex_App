@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentListPokeBinding
 import com.example.pokedex.service.listener.PokeListner
+import com.example.pokedex.service.model.PokemonModel
 import com.example.pokedex.view.adapter.PokeAdapter
 import com.example.pokedex.viewmodel.ListPokeViewModel
+import com.google.gson.Gson
 
 
 class ListPokeFragment : Fragment(),View.OnClickListener {
@@ -36,8 +38,10 @@ class ListPokeFragment : Fragment(),View.OnClickListener {
         observers()
 
         val listener = object : PokeListner{
-            override fun onListClick(id: Int) {
-                println(id)
+            override fun onListClick(poke: PokemonModel) {
+                val gson = Gson()
+                val listPoke = gson.toJson(poke)
+                startActivity(Intent(context,PokeDetailsActivity::class.java).putExtra("objPoke",listPoke))
             }
         }
 
