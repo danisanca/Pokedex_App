@@ -143,9 +143,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nesteScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
         android:overScrollMode="never"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -157,6 +157,7 @@
             tools:context=".view.PokeDetailsActivity">
 
             <com.google.android.material.appbar.AppBarLayout
+               android:id="@+id/appbar_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/bkgTypeGrass"
@@ -164,6 +165,9 @@
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabTextColor="@color/textGray"
+                    app:tabSelectedTextColor="@color/white"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

@@ -128,6 +128,10 @@ class PokeDetailsActivity : AppCompatActivity() {
             binding.typeTwoDetails.isVisible = false
         }
 
+       // binding.appBarLayout.setBackgroundColor(backgroundTypeColor(colorOne))
+        binding.appBarLayout.backgroundTintList = ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
+       // binding.appbarMenu.setBackgroundColor(backgroundTypeColor(colorOne))
+        binding.appbarMenu.backgroundTintList = ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
 
     }
 
