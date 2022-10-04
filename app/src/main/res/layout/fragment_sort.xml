@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    tools:context=".view.SortFragment">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sort"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_sub_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sort Pokémons alphabetically or by National Pokédex number!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+    <Button
+        android:id="@+id/btn_smalllest_number_first"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Smallest number first"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/backgroudInput"
+        android:textColor="@color/textGray"
+        app:layout_constraintTop_toBottomOf="@id/text_sub_title" />
+
+    <Button
+        android:id="@+id/btn_highest_number_first"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:text="Highest number first"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/backgroudInput"
+        android:textColor="@color/textGray"
+        app:layout_constraintTop_toBottomOf="@id/btn_smalllest_number_first" />
+    <Button
+        android:id="@+id/btn_A_to_Z"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:text="A-Z"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/backgroudInput"
+        android:textColor="@color/textGray"
+        app:layout_constraintTop_toBottomOf="@id/btn_highest_number_first" />
+    <Button
+        android:id="@+id/btn_Z_to_A"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:text="Z-A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/backgroudInput"
+        android:textColor="@color/textGray"
+        app:layout_constraintTop_toBottomOf="@id/btn_A_to_Z" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

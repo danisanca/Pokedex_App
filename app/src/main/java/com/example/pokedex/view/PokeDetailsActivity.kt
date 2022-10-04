@@ -25,6 +25,7 @@ class PokeDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPokeDetailsBinding.inflate(layoutInflater)
+
         viewModel = ViewModelProvider(this)[PokeDetailsViewModel::class.java]
         setContentView(binding.root)
         extrasIntent()
@@ -53,12 +54,16 @@ class PokeDetailsActivity : AppCompatActivity() {
     }
 
     private fun configActivity(){
-
+        navigateUpTo()
         changeNumber(objPoke.id)
         binding.textPokeNameDetails.text = objPoke.name.replaceFirstChar { it.uppercase() }
         binding.imgPokeDetails.load(objPoke.image)
         changeNameType(objPoke.types)
         changeColor(objPoke.types)
+    }
+
+    private fun navigateUpTo() {
+        println("clicou")
     }
 
     private fun changeNumber(id:Int){
@@ -134,7 +139,6 @@ class PokeDetailsActivity : AppCompatActivity() {
         binding.appbarMenu.backgroundTintList = ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
 
     }
-
 
     fun typeColor(color:String): Int {
         when(color){

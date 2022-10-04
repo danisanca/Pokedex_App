@@ -8,4 +8,6 @@
     <string name="tab_text_2">Status</string>
     <string name="dexcription_evs">The ranges shown on the right are for a level 100 Pokémon. Maximum values are based on a beneficial nature, 252 EVs, 31 IVs; minimum values are based on a hindering nature, 0 EVs, 0 IVs.</string>
     <string name="text_effectiveness_type">The effectiveness of each type on</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

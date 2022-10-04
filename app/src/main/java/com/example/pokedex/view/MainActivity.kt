@@ -13,7 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindind = ActivityMainBinding.inflate(layoutInflater)
+
         chageFragment(ListPokeFragment())
+
         supportActionBar?.hide()
         setContentView(bindind.root)
     }

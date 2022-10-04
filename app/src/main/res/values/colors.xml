@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="backgroudInput">#F2F2F2</color>
+    <color name="backgroudInputSelected">#EA5D60</color>
     <color name="textGray">#747476</color>
     <color name="textBlack">#17171B</color>
 
@@ -52,5 +53,11 @@
     <color name="typeWater">#4A90DA</color>
 
     <!-- Height and Weight Color -->
+    <color name="heightShort">#FFC5E6</color>
+    <color name="heightMedium">#AEBFD7</color>
+    <color name="heightTall">#AAACB8</color>
+    <color name="weightLight">#99CD7C</color>
+    <color name="weightNormal">#57B2DC</color>
+    <color name="weightHeavy">#5A92A5</color>
 
 </resources>

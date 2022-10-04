@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.R
@@ -17,14 +18,14 @@ import com.example.pokedex.view.adapter.PokeAdapter
 import com.example.pokedex.viewmodel.ListPokeViewModel
 import com.google.gson.Gson
 
-
-class ListPokeFragment : Fragment(),View.OnClickListener {
+class ListPokeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentListPokeBinding
     private lateinit var viewModel:ListPokeViewModel
     private val adapter = PokeAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         binding = FragmentListPokeBinding.inflate(layoutInflater,container,false)
         viewModel = ViewModelProvider(this)[ListPokeViewModel::class.java]
 
@@ -34,6 +35,8 @@ class ListPokeFragment : Fragment(),View.OnClickListener {
         binding.recyclerList.adapter = adapter
 
         binding.btnGeneration.setOnClickListener(this)
+        binding.btnFilter.setOnClickListener(this)
+        binding.btnSort.setOnClickListener(this)
 
         observers()
 
@@ -60,8 +63,17 @@ class ListPokeFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onClick(v: View) {
+
         if(v.id == R.id.btn_generation){
-            startActivity(Intent(context,PokeDetailsActivity::class.java))
+
+            GenerationsFragment().show(parentFragmentManager,"GenerationSheetDialog")
+
+        }
+        if(v.id == R.id.btn_filter){
+           FiltersFragment().show(parentFragmentManager,"BottomSheetDialog")
+        }
+        if(v.id == R.id.btn_sort){
+            SortFragment().show(parentFragmentManager,"BottomSheetDialog")
         }
     }
 

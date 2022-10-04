@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".view.GenerationsFragment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="UselessParent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Generations"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Use search for generations to explore your Pokémon!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+        <ImageView
+            android:id="@+id/box_one_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_sub_title"/>
+
+        <ImageView
+            android:id="@+id/img_box_one_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_1"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_one_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_one_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_one_gen" />
+
+        <TextView
+            android:id="@+id/text_box_one_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation I"
+            app:layout_constraintBottom_toBottomOf="@+id/box_one_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_one_gen"
+            app:layout_constraintStart_toStartOf="@id/box_one_gen" />
+
+        <ImageView
+            android:id="@+id/box_second_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_sub_title"/>
+
+        <ImageView
+            android:id="@+id/img_box_second_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_2"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_second_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_second_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_second_gen" />
+
+        <TextView
+            android:id="@+id/text_box_second_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation II"
+            app:layout_constraintBottom_toBottomOf="@+id/box_second_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_second_gen"
+            app:layout_constraintStart_toStartOf="@id/box_second_gen" />
+
+        <ImageView
+            android:id="@+id/box_third_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_one_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_third_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_3"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_third_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_third_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_third_gen" />
+
+        <TextView
+            android:id="@+id/text_box_third_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation III"
+            app:layout_constraintBottom_toBottomOf="@+id/box_third_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_third_gen"
+            app:layout_constraintStart_toStartOf="@id/box_third_gen" />
+
+        <ImageView
+            android:id="@+id/box_four_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_second_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_four_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_4"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_four_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_four_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_four_gen" />
+
+        <TextView
+            android:id="@+id/text_box_four_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation IV"
+            app:layout_constraintBottom_toBottomOf="@+id/box_four_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_four_gen"
+            app:layout_constraintStart_toStartOf="@id/box_four_gen" />
+
+        <ImageView
+            android:id="@+id/box_five_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_third_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_five_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_5"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_five_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_five_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_five_gen" />
+
+        <TextView
+            android:id="@+id/text_box_five_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation V"
+            app:layout_constraintBottom_toBottomOf="@+id/box_five_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_five_gen"
+            app:layout_constraintStart_toStartOf="@id/box_five_gen" />
+
+        <ImageView
+            android:id="@+id/box_six_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_four_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_six_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_6"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_six_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_six_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_six_gen" />
+
+        <TextView
+            android:id="@+id/text_box_six_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation VI"
+            app:layout_constraintBottom_toBottomOf="@+id/box_six_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_six_gen"
+            app:layout_constraintStart_toStartOf="@id/box_six_gen" />
+
+        <ImageView
+            android:id="@+id/box_seven_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_five_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_seven_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_7"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_seven_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_seven_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_seven_gen" />
+
+        <TextView
+            android:id="@+id/text_box_seven_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation VII"
+            app:layout_constraintBottom_toBottomOf="@+id/box_seven_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_seven_gen"
+            app:layout_constraintStart_toStartOf="@id/box_seven_gen" />
+
+        <ImageView
+            android:id="@+id/box_eight_gen"
+            android:layout_width="160dp"
+            android:layout_height="129dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bkg_style_rounded_type"
+            android:backgroundTint="@color/backgroudInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_six_gen"/>
+
+        <ImageView
+            android:id="@+id/img_box_eight_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_gen_8"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_box_eight_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_eight_gen"
+            app:layout_constraintStart_toStartOf="@+id/box_eight_gen" />
+
+        <TextView
+            android:id="@+id/text_box_eight_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Generation VIII"
+            app:layout_constraintBottom_toBottomOf="@+id/box_eight_gen"
+            app:layout_constraintEnd_toEndOf="@+id/box_eight_gen"
+            app:layout_constraintStart_toStartOf="@id/box_eight_gen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+
+</LinearLayout>

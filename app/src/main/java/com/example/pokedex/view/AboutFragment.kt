@@ -89,7 +89,6 @@ class AboutFragment : Fragment() {
 
     }
 
-
     private fun typeColor(color:String): Int {
         when(color){
             "bug" -> return R.color.typeBug
@@ -115,6 +114,8 @@ class AboutFragment : Fragment() {
             else -> return R.color.teal_200
         }
     }
+
+
 
 }
 
