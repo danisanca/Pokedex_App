@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation I"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_one_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_one_gen"
             app:layout_constraintStart_toStartOf="@id/box_one_gen" />
@@ -94,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation II"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_second_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_second_gen"
             app:layout_constraintStart_toStartOf="@id/box_second_gen" />
@@ -124,6 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation III"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_third_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_third_gen"
             app:layout_constraintStart_toStartOf="@id/box_third_gen" />
@@ -154,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation IV"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_four_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_four_gen"
             app:layout_constraintStart_toStartOf="@id/box_four_gen" />
@@ -184,6 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation V"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_five_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_five_gen"
             app:layout_constraintStart_toStartOf="@id/box_five_gen" />
@@ -214,6 +219,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation VI"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_six_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_six_gen"
             app:layout_constraintStart_toStartOf="@id/box_six_gen" />
@@ -244,6 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation VII"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_seven_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_seven_gen"
             app:layout_constraintStart_toStartOf="@id/box_seven_gen" />
@@ -274,6 +281,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Generation VIII"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_eight_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_eight_gen"
             app:layout_constraintStart_toStartOf="@id/box_eight_gen" />

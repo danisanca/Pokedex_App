@@ -418,7 +418,7 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_reset"
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/backgroudInput"
@@ -431,6 +431,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rang_slider_rangPoke" />
 
     <Button
+        android:id="@+id/btn_apply"
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/typePsychic"
@@ -438,10 +439,10 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_reset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/btn_reset"
+        app:layout_constraintTop_toTopOf="@+id/btn_reset" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
