@@ -411,8 +411,8 @@
         app:trackColorActive="@color/typePsychic"
         app:trackColorInactive="@color/backgroudInput"
         app:thumbColor="@color/typePsychic"
-        android:valueFrom="0.0"
-        android:valueTo="100.0"
+        android:valueFrom="1.0"
+        android:valueTo="817.0"
         android:stepSize="1.0"
         app:values="@array/initial_slider_values"
         />

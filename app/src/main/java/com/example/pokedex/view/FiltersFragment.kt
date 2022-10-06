@@ -79,89 +79,95 @@ class FiltersFragment : BottomSheetDialogFragment(),View.OnClickListener {
 
     }
     private fun Observers(){
-        listViewModel.optionsSelectedfilters.observe(this, Observer {
-            if(it.height != null){
-                when(it.height){
-                    "short" -> itemHeightSelected = binding.imgIcShort.id
-                    "medium" -> itemHeightSelected = binding.imgIcMedium.id
-                    "tall" -> itemHeightSelected = binding.imgIcTall.id
-                    else -> null
-                }
-            }
-            if(it.weight != null){
-                when (it.weight) {
-                    "light" -> itemWeightSelected = binding.imgIcLightWei.id
-                    "normal" -> itemWeightSelected = binding.imgIcNormalWei.id
-                    "heavy" -> itemWeightSelected = binding.imgIcHeavyWei.id
-                    else -> null
-                }
-            }
-            if(it.types.isNotEmpty()){
-                it.types.map{
-                    if(it == PokedexConstants.FILTERS.TYPE.BUG){
-                        itemTypeSelected.add(binding.imgIcBug.id)
+        listViewModel.filterSelected.observe(this, Observer {
+            if(it == PokedexConstants.MENUFILTER.FILTERS_OPTION){
+                listViewModel.optionsSelectedfilters.observe(this, Observer {
+                    if(it.height != null){
+                        when(it.height){
+                            "short" -> itemHeightSelected = binding.imgIcShort.id
+                            "medium" -> itemHeightSelected = binding.imgIcMedium.id
+                            "tall" -> itemHeightSelected = binding.imgIcTall.id
+                            else -> null
+                        }
                     }
-                    else if(it == PokedexConstants.FILTERS.TYPE.DARK){
-                        itemTypeSelected.add(binding.imgIcDark.id)
+                    if(it.weight != null){
+                        when (it.weight) {
+                            "light" -> itemWeightSelected = binding.imgIcLightWei.id
+                            "normal" -> itemWeightSelected = binding.imgIcNormalWei.id
+                            "heavy" -> itemWeightSelected = binding.imgIcHeavyWei.id
+                            else -> null
+                        }
                     }
-                    else if(it == PokedexConstants.FILTERS.TYPE.DRAGON ){
-                        itemTypeSelected.add(binding.imgIcDragon.id)
+                    if(it.types.isNotEmpty()){
+                        it.types.map{
+                            if(it == PokedexConstants.FILTERS.TYPE.BUG){
+                                itemTypeSelected.add(binding.imgIcBug.id)
+                            }
+                            else if(it == PokedexConstants.FILTERS.TYPE.DARK){
+                                itemTypeSelected.add(binding.imgIcDark.id)
+                            }
+                            else if(it == PokedexConstants.FILTERS.TYPE.DRAGON ){
+                                itemTypeSelected.add(binding.imgIcDragon.id)
+                            }
+                            else if(it == PokedexConstants.FILTERS.TYPE.ELECTRIC ){
+                                itemTypeSelected.add(binding.imgIcElectric.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.FAIRY ){
+                                itemTypeSelected.add(binding.imgIcFairy.id)
+                            }
+                            else if(it == PokedexConstants.FILTERS.TYPE.FIGHTING){
+                                itemTypeSelected.add(binding.imgIcFighting.id)
+                            }
+                            else if(it == PokedexConstants.FILTERS.TYPE.FIRE){
+                                itemTypeSelected.add(binding.imgIcFire.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.FLYING ){
+                                itemTypeSelected.add(binding.imgIcFlying.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.GHOST ){
+                                itemTypeSelected.add(binding.imgIcGhost.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.GRASS ){
+                                itemTypeSelected.add(binding.imgIcGrass.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.GROUND ){
+                                itemTypeSelected.add(binding.imgIcGround.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.NORMAL){
+                                itemTypeSelected.add( binding.imgIcNormal.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.POISON ){
+                                itemTypeSelected.add(binding.imgIcPoison.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.PSYCHIC ){
+                                itemTypeSelected.add(binding.imgIcPsychic.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.ROCK ){
+                                itemTypeSelected.add(binding.imgIcRock.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.STEEL ){
+                                itemTypeSelected.add(binding.imgIcSteel.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.WATER ){
+                                itemTypeSelected.add(binding.imgIcWater.id)
+                            }
+                            else if(it ==PokedexConstants.FILTERS.TYPE.ICE ){
+                                itemTypeSelected.add(binding.imgIcIce.id)
+                            }
+                            else{
+                                println("Not Found")
+                            }
+                        }
                     }
-                    else if(it == PokedexConstants.FILTERS.TYPE.ELECTRIC ){
-                        itemTypeSelected.add(binding.imgIcElectric.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.FAIRY ){
-                        itemTypeSelected.add(binding.imgIcFairy.id)
-                    }
-                    else if(it == PokedexConstants.FILTERS.TYPE.FIGHTING){
-                        itemTypeSelected.add(binding.imgIcFighting.id)
-                    }
-                    else if(it == PokedexConstants.FILTERS.TYPE.FIRE){
-                        itemTypeSelected.add(binding.imgIcFire.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.FLYING ){
-                        itemTypeSelected.add(binding.imgIcFlying.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.GHOST ){
-                        itemTypeSelected.add(binding.imgIcGhost.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.GRASS ){
-                        itemTypeSelected.add(binding.imgIcGrass.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.GROUND ){
-                        itemTypeSelected.add(binding.imgIcGround.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.NORMAL){
-                        itemTypeSelected.add( binding.imgIcNormal.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.POISON ){
-                        itemTypeSelected.add(binding.imgIcPoison.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.PSYCHIC ){
-                        itemTypeSelected.add(binding.imgIcPsychic.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.ROCK ){
-                        itemTypeSelected.add(binding.imgIcRock.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.STEEL ){
-                        itemTypeSelected.add(binding.imgIcSteel.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.WATER ){
-                        itemTypeSelected.add(binding.imgIcWater.id)
-                    }
-                    else if(it ==PokedexConstants.FILTERS.TYPE.ICE ){
-                        itemTypeSelected.add(binding.imgIcIce.id)
-                    }
-                    else{
-                        println("Not Found")
-                    }
-                }
-            }
 
-            itemHeightSelected?.let { it1 -> changeColorHeight(it1) }
-            itemWeightSelected?.let { it1 -> changeColorWeight(it1) }
-            itemTypeSelected.map {
-                changeColorType(it)
+                    binding.rangSliderRangPoke.setValues(it.rangeMin,it.rangeMax)
+
+                    itemHeightSelected?.let { it1 -> changeColorHeight(it1) }
+                    itemWeightSelected?.let { it1 -> changeColorWeight(it1) }
+                    itemTypeSelected.map {
+                        changeColorType(it)
+                    }
+                })
             }
         })
 
@@ -170,7 +176,14 @@ class FiltersFragment : BottomSheetDialogFragment(),View.OnClickListener {
     private fun applyFilters(){
         var heightValue = ""
         var weighttValue = ""
+        var valueRangeMin = 1f
+        var valueRangeMax = 817f
         var typeValue:MutableList<String> = mutableListOf()
+
+        valueRangeMin = binding.rangSliderRangPoke.values[0]
+        valueRangeMax = binding.rangSliderRangPoke.values[1]
+
+
 
 
         if(itemHeightSelected != null){
@@ -255,9 +268,10 @@ class FiltersFragment : BottomSheetDialogFragment(),View.OnClickListener {
             this.height = heightValue
             this.weight = weighttValue
             this.types = typeValue
+            this.rangeMin = valueRangeMin
+            this.rangeMax = valueRangeMax
         }
         listViewModel.menuFilterSelected(filterModel)
-
     }
 
     private fun genListTypes(){
@@ -321,6 +335,8 @@ class FiltersFragment : BottomSheetDialogFragment(),View.OnClickListener {
         listWeights.map{
             it.backgroundTintList = context?.let { it1 -> ContextCompat.getColorStateList(it1, R.color.white) }
         }
+        listViewModel.menuResetFilter()
+        dismiss()
     }
 
     private fun changeColorHeight(itemBox:Int){
