@@ -1,17 +1,15 @@
-package com.example.pokedex.view
+package com.example.pokedex.presenter
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentAboutBinding
 import com.example.pokedex.service.model.PokemonModel
-import com.example.pokedex.viewmodel.AboutViewModel
+import com.example.pokedex.presenter.viewmodel.AboutViewModel
 
 
 class AboutFragment : Fragment() {
@@ -29,11 +27,15 @@ class AboutFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
 
-       configDataActivity(poke)
+        configDataActivity(poke)
 
 
         return binding.root
@@ -42,9 +44,10 @@ class AboutFragment : Fragment() {
     companion object {
 
         private const val ARG_SECTION_NUMBER = "section_number"
-        private var poke:PokemonModel = PokemonModel()
+        private var poke: PokemonModel = PokemonModel()
+
         @JvmStatic
-        fun newInstance(sectionNumber: Int,objPoke:PokemonModel): AboutFragment {
+        fun newInstance(sectionNumber: Int, objPoke: PokemonModel): AboutFragment {
 
             return AboutFragment().apply {
                 arguments = Bundle().apply {
@@ -60,37 +63,40 @@ class AboutFragment : Fragment() {
         _binding = null
     }
 
-    private fun configDataActivity(poke:PokemonModel){
+    private fun configDataActivity(poke: PokemonModel) {
 
         binding.textPokeDescription.text = poke.description
         context?.let { binding.textPokedexData.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         binding.textSpeciesValue.text = poke.species
-        binding.textHeightValue.text = poke.height.toString()+"m"
-        binding.textWeightValue.text = poke.weight.toString()+"Kg"
+        binding.textHeightValue.text = poke.height.toString() + "m"
+        binding.textWeightValue.text = poke.weight.toString() + "Kg"
         context?.let { binding.textTraining.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         binding.textEVYieldValue.text = poke.trainingModel.evYield
         binding.textCatchRateTextValue.text = poke.trainingModel.catchRateModel.value.toString()
         binding.textCatchRateValue.text = poke.trainingModel.catchRateModel.text
-        binding.textBaseFriendshipTextValue.text = poke.trainingModel.baseFriendshipModel.value.toString()
-        binding.textBaseFriendshipValue.text= poke.trainingModel.baseFriendshipModel.text
+        binding.textBaseFriendshipTextValue.text =
+            poke.trainingModel.baseFriendshipModel.value.toString()
+        binding.textBaseFriendshipValue.text = poke.trainingModel.baseFriendshipModel.text
         binding.textBaseExpValue.text = poke.trainingModel.baseExp.toString()
         binding.textGrowthRateValue.text = poke.trainingModel.growthRate
         context?.let { binding.textBreeding.setTextColor(it.getColor(typeColor(poke.types[0]))) }
 
         binding.textEggCycleValue.text = poke.breeding.eggCyclesModel.value.toString()
         binding.textEggCycleTextValue.text = poke.breeding.eggCyclesModel.text
-        binding.textMaleDescription.text = "♂ "+poke.breeding.genderModel.male.toString() + "%, "
-        binding.textFemaleDescription.text = "♀ " + poke.breeding.genderModel.female+"%"
-        if(poke.breeding.eggGroups.size > 1){
-            binding.textEggGroupValue.text = "${poke.breeding.eggGroups[0].replaceFirstChar { it.uppercase() }} ${poke.breeding.eggGroups[1].replaceFirstChar { it.uppercase() }}"
-        }else{
-            binding.textEggGroupValue.text = poke.breeding.eggGroups[0].replaceFirstChar { it.uppercase() }
+        binding.textMaleDescription.text = "♂ " + poke.breeding.genderModel.male.toString() + "%, "
+        binding.textFemaleDescription.text = "♀ " + poke.breeding.genderModel.female + "%"
+        if (poke.breeding.eggGroups.size > 1) {
+            binding.textEggGroupValue.text =
+                "${poke.breeding.eggGroups[0].replaceFirstChar { it.uppercase() }} ${poke.breeding.eggGroups[1].replaceFirstChar { it.uppercase() }}"
+        } else {
+            binding.textEggGroupValue.text =
+                poke.breeding.eggGroups[0].replaceFirstChar { it.uppercase() }
         }
 
     }
 
-    private fun typeColor(color:String): Int {
-        when(color){
+    private fun typeColor(color: String): Int {
+        when (color) {
             "bug" -> return R.color.typeBug
             "dark" -> return R.color.typeDark
             "dragon" -> return R.color.typeDragon
@@ -114,8 +120,5 @@ class AboutFragment : Fragment() {
             else -> return R.color.teal_200
         }
     }
-
-
-
 }
 

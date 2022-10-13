@@ -19,19 +19,15 @@ class PokemonRepository() {
             override fun onResponse(call: Call<List<PokemonModel>>,response: Response<List<PokemonModel>>) {
               if(response.code() == 200){
                   response.body()?.let { listener.onSuccess(it) }
-
               }else{
                   listener.onFailure(failResponse(response.errorBody()!!.string()))
               }
             }
-
             override fun onFailure(call: Call<List<PokemonModel>>, t: Throwable) {
                 listener.onFailure("Erro Inesperado")
             }
         })
     }
-
-
 
     private fun failResponse(str:String):String{
         return Gson().fromJson(str,String::class.java)

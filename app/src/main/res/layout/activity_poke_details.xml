@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.PokeDetailsActivity">
+    tools:context=".presenter.PokeDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -92,7 +92,7 @@
                     android:layout_height="25dp"
                     android:background="@drawable/style_rounded_type"
                     android:backgroundTint="@color/typeGrass"
-                    tools:drawableStart="@drawable/ic_grass_effect"
+                    tools:drawableStart="@drawable/ic_grass"
                     android:drawablePadding="4dp"
                     android:layout_marginTop="4dp"
                     android:padding="4dp"
@@ -110,7 +110,7 @@
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/typePoison"
                     android:background="@drawable/style_rounded_type"
-                    tools:drawableStart="@drawable/ic_poison_effect"
+                    tools:drawableStart="@drawable/ic_poison"
                     android:layout_marginTop="4dp"
                     android:drawablePadding="4dp"
                     android:padding="4dp"
@@ -124,6 +124,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -149,12 +150,13 @@
         android:overScrollMode="never"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".view.PokeDetailsActivity">
+            android:layout_height="match_parent"
+            tools:context=".presenter.PokeDetailsActivity">
 
             <com.google.android.material.appbar.AppBarLayout
                android:id="@+id/appbar_menu"
@@ -172,14 +174,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.appbar.AppBarLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="760dp"
+        android:background="@drawable/style_rounded_details"
+        android:backgroundTint="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/style_rounded_details"
-                android:backgroundTint="@color/white"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

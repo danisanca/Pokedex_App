@@ -1,18 +1,16 @@
-package com.example.pokedex.view
+package com.example.pokedex.presenter
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentStatusBinding
 import com.example.pokedex.service.model.PokemonModel
-import com.example.pokedex.viewmodel.StatusViewModel
+import com.example.pokedex.presenter.viewmodel.StatusViewModel
 import java.text.DecimalFormat
 
 
@@ -20,7 +18,6 @@ class StatusFragment : Fragment() {
 
     private lateinit var pageViewModel: StatusViewModel
     private var _binding: FragmentStatusBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,10 +28,13 @@ class StatusFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentStatusBinding.inflate(inflater, container, false)
         configDataActivity(poke)
-
 
         return binding.root
     }
@@ -43,8 +43,9 @@ class StatusFragment : Fragment() {
 
         private const val ARG_SECTION_NUMBER = "section_number"
         private var poke: PokemonModel = PokemonModel()
+
         @JvmStatic
-        fun newInstance(sectionNumber: Int,objPoke:PokemonModel): StatusFragment {
+        fun newInstance(sectionNumber: Int, objPoke: PokemonModel): StatusFragment {
 
             return StatusFragment().apply {
                 arguments = Bundle().apply {
@@ -60,15 +61,16 @@ class StatusFragment : Fragment() {
         _binding = null
     }
 
-    private fun configDataActivity(poke:PokemonModel){
-        context?.let { binding.textBaseStatusData.setTextColor(it.getColor(typeColor(poke.types[0])))}
-        context?.let { binding.textTypeDefenses.setTextColor(it.getColor(typeColor(poke.types[0])))}
+    private fun configDataActivity(poke: PokemonModel) {
+        context?.let { binding.textBaseStatusData.setTextColor(it.getColor(typeColor(poke.types[0]))) }
+        context?.let { binding.textTypeDefenses.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         changeProgressColor(poke.types[0])
         changeProgress()
         changeProgressText()
         changeTypeDefense()
     }
-    private fun changeProgressText(){
+
+    private fun changeProgressText() {
         binding.textHpValue.text = poke.baseStatusModel.hp[0].toString()
         binding.textHpMinValue.text = poke.baseStatusModel.hp[1].toString()
         binding.textHpMaxValue.text = poke.baseStatusModel.hp[2].toString()
@@ -93,13 +95,14 @@ class StatusFragment : Fragment() {
         binding.textSpeedMinValue.text = poke.baseStatusModel.speed[1].toString()
         binding.textSpeedMaxValue.text = poke.baseStatusModel.speed[2].toString()
 
-        val sum = poke.baseStatusModel.hp[0] + poke.baseStatusModel.attack[0] +poke.baseStatusModel.defence[0]+
-                poke.baseStatusModel.specialAttack[0]+poke.baseStatusModel.specialDefence[0]+ poke.baseStatusModel.speed[0]
+        val sum =
+            poke.baseStatusModel.hp[0] + poke.baseStatusModel.attack[0] + poke.baseStatusModel.defence[0] +
+                    poke.baseStatusModel.specialAttack[0] + poke.baseStatusModel.specialDefence[0] + poke.baseStatusModel.speed[0]
 
         binding.textTotalValue.text = sum.toString()
     }
 
-    private fun changeProgress(){
+    private fun changeProgress() {
         binding.progressbarHp.setProgress(poke.baseStatusModel.hp[0])
         binding.progressbarHp.max = poke.baseStatusModel.hp[2]
         binding.progressbarAttack.setProgress(poke.baseStatusModel.attack[0])
@@ -113,60 +116,70 @@ class StatusFragment : Fragment() {
         binding.progressbarSpSpeed.setProgress(poke.baseStatusModel.speed[0])
         binding.progressbarSpSpeed.max = poke.baseStatusModel.speed[2]
 
-
     }
 
-    private fun changeProgressColor(color:String){
-        binding.progressbarHp.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
-        binding.progressbarAttack.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
-        binding.progressbarDefence.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
-        binding.progressbarSpAtk.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
-        binding.progressbarSpDef.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
-        binding.progressbarSpSpeed.progressTintList = context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+    private fun changeProgressColor(color: String) {
+        binding.progressbarHp.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+        binding.progressbarAttack.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+        binding.progressbarDefence.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+        binding.progressbarSpAtk.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+        binding.progressbarSpDef.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
+        binding.progressbarSpSpeed.progressTintList =
+            context?.let { ContextCompat.getColorStateList(it, typeColor(poke.types[0])) }
     }
 
-    private fun changeTypeDefense(){
-        binding.textIcNormalEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.normal)
+    private fun changeTypeDefense() {
+        binding.textIcNormalEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.normal)
         binding.textIcFireEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.fire)
         binding.textIcWaterEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.water)
-        binding.textIcElectricEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.electric)
+        binding.textIcElectricEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.electric)
         binding.textIcGrassEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.grass)
         binding.textIcIceEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.ice)
-        binding.textIcFightingEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.fighting)
-        binding.textIcPoisonEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.poison)
-        binding.textIcGroundEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.ground)
-        binding.textIcFlyingEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.flying)
-        binding.textIcPsychicEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.psychic)
+        binding.textIcFightingEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.fighting)
+        binding.textIcPoisonEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.poison)
+        binding.textIcGroundEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.ground)
+        binding.textIcFlyingEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.flying)
+        binding.textIcPsychicEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.psychic)
         binding.textIcBugEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.bug)
         binding.textIcRockEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.rock)
         binding.textIcGhostEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.ghost)
-        binding.textIcDragonEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.dragon)
+        binding.textIcDragonEffectivyValue.text =
+            customTextTypeDefence(poke.typeDefencesModel.dragon)
         binding.textIcDarkEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.dark)
         binding.textIcSteelEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.steel)
         binding.textIcFairyEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.fairy)
-
     }
-    private fun customTextTypeDefence(value:Float):String{
-        if(value < 1 ){
-            return when(value){
+
+    private fun customTextTypeDefence(value: Float): String {
+        if (value < 1) {
+            return when (value) {
                 0.25f -> "¼"
                 0.5f -> "½"
                 else -> ""
             }
-        }
-        else if(value <= 0){
+        } else if (value <= 0) {
             return ""
-        }
-        else{
+        } else {
             val dec = DecimalFormat("#")
             return dec.format(value).toString()
         }
 
     }
 
-
-    private fun typeColor(color:String): Int {
-        when(color){
+    private fun typeColor(color: String): Int {
+        when (color) {
             "bug" -> return R.color.typeBug
             "dark" -> return R.color.typeDark
             "dragon" -> return R.color.typeDragon

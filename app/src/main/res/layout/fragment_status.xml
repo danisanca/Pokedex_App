@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="32dp"
-    tools:context=".view.StatusFragment">
+    tools:context=".presenter.StatusFragment">
 
     <TextView
         android:id="@+id/text_base_status_data"
@@ -70,13 +70,15 @@
     <ProgressBar
         android:id="@+id/progressbar_hp"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_hp_value"
         app:layout_constraintStart_toEndOf="@+id/text_hp_value"
         app:layout_constraintTop_toTopOf="@+id/text_hp_value" />
@@ -131,13 +133,15 @@
     <ProgressBar
         android:id="@+id/progressbar_attack"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_attack_value"
         app:layout_constraintStart_toEndOf="@+id/text_attack_value"
         app:layout_constraintTop_toTopOf="@+id/text_attack_value" />
@@ -192,13 +196,15 @@
     <ProgressBar
         android:id="@+id/progressbar_defence"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_defence_value"
         app:layout_constraintStart_toEndOf="@+id/text_defence_value"
         app:layout_constraintTop_toTopOf="@+id/text_defence_value" />
@@ -253,13 +259,15 @@
     <ProgressBar
         android:id="@+id/progressbar_sp_atk"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_sp_atk_value"
         app:layout_constraintStart_toEndOf="@+id/text_sp_atk_value"
         app:layout_constraintTop_toTopOf="@+id/text_sp_atk_value" />
@@ -314,13 +322,15 @@
     <ProgressBar
         android:id="@+id/progressbar_sp_def"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_sp_def_value"
         app:layout_constraintStart_toEndOf="@+id/text_sp_def_value"
         app:layout_constraintTop_toTopOf="@+id/text_sp_def_value" />
@@ -375,13 +385,15 @@
     <ProgressBar
         android:id="@+id/progressbar_sp_speed"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="159dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:max="294"
         android:min="0"
         android:progress="45"
         android:progressTint="@color/typeGrass"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_total_min_description"
         app:layout_constraintBottom_toBottomOf="@+id/text_speed_value"
         app:layout_constraintStart_toEndOf="@+id/text_speed_value"
         app:layout_constraintTop_toTopOf="@+id/text_speed_value" />
@@ -470,9 +482,12 @@
 
     <ImageView
         android:id="@+id/img_ic_normal_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_normal_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeNormal"
+        android:padding="4dp"
+        android:src="@drawable/ic_normal"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -491,9 +506,12 @@
 
     <ImageView
         android:id="@+id/img_ic_fire_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_fire_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeFire"
+        android:padding="4dp"
+        android:src="@drawable/ic_fire"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -513,9 +531,12 @@
 
     <ImageView
         android:id="@+id/img_ic_water_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_water_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeWater"
+        android:padding="4dp"
+        android:src="@drawable/ic_water"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -535,9 +556,12 @@
 
     <ImageView
         android:id="@+id/img_ic_electric_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_electric_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeElectric"
+        android:padding="4dp"
+        android:src="@drawable/ic_electric"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -557,9 +581,12 @@
 
     <ImageView
         android:id="@+id/img_ic_grass_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_grass_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeGrass"
+        android:padding="4dp"
+        android:src="@drawable/ic_grass"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -579,9 +606,12 @@
 
     <ImageView
         android:id="@+id/img_ic_ice_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_ice_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeIce"
+        android:padding="4dp"
+        android:src="@drawable/ic_ice"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -601,9 +631,12 @@
 
     <ImageView
         android:id="@+id/img_ic_fighting_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_fighting_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeFighting"
+        android:padding="4dp"
+        android:src="@drawable/ic_fighting"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -623,9 +656,12 @@
 
     <ImageView
         android:id="@+id/img_ic_poison_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_poison_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typePoison"
+        android:padding="4dp"
+        android:src="@drawable/ic_poison"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -645,9 +681,12 @@
 
     <ImageView
         android:id="@+id/img_ic_ground_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_ground_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeGround"
+        android:padding="4dp"
+        android:src="@drawable/ic_ground"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_type_defenses_subtitle"
@@ -667,9 +706,12 @@
 
     <ImageView
         android:id="@+id/img_ic_flying_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_flying_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeFlying"
+        android:padding="4dp"
+        android:src="@drawable/ic_flying"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_normal_effectivy_value"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -688,9 +730,12 @@
 
     <ImageView
         android:id="@+id/img_ic_psychic_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_psychic_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typePsychic"
+        android:padding="4dp"
+        android:src="@drawable/ic_psychic"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_fire_effectivy_value"
@@ -710,9 +755,12 @@
 
     <ImageView
         android:id="@+id/img_ic_bug_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bug_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeBug"
+        android:padding="4dp"
+        android:src="@drawable/ic_bug"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_water_effectivy_value"
@@ -732,9 +780,12 @@
 
     <ImageView
         android:id="@+id/img_ic_rock_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_rock_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeRock"
+        android:padding="4dp"
+        android:src="@drawable/ic_rock"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_electric_effectivy_value"
@@ -754,9 +805,12 @@
 
     <ImageView
         android:id="@+id/img_ic_ghost_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_ghost_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeGhost"
+        android:padding="4dp"
+        android:src="@drawable/ic_ghost"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_grass_effectivy_value"
@@ -776,9 +830,12 @@
 
     <ImageView
         android:id="@+id/img_ic_dragon_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_dragon_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeDragon"
+        android:padding="4dp"
+        android:src="@drawable/ic_dragon"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_ice_effectivy_value"
@@ -798,9 +855,12 @@
 
     <ImageView
         android:id="@+id/img_ic_dark_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_dark_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeDark"
+        android:padding="4dp"
+        android:src="@drawable/ic_dark"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_fighting_effectivy_value"
@@ -820,9 +880,12 @@
 
     <ImageView
         android:id="@+id/img_ic_steel_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_steel_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeSteel"
+        android:padding="4dp"
+        android:src="@drawable/ic_steel"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_poison_effectivy_value"
@@ -842,9 +905,12 @@
 
     <ImageView
         android:id="@+id/img_ic_fairy_effectivy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_fairy_effect"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/style_rounded_type"
+        android:backgroundTint="@color/typeFairy"
+        android:padding="4dp"
+        android:src="@drawable/ic_fairy"
         android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toBottomOf="@+id/text_ic_ground_effectivy_value"

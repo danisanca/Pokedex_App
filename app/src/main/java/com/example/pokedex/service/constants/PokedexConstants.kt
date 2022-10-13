@@ -60,8 +60,5 @@ class PokedexConstants private constructor() {
             const val NORMAL = "normal"
             const val HEAVY = "heavy"
         }
-
     }
-
-
 }
