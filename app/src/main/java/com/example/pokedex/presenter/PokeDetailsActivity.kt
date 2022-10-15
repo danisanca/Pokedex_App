@@ -8,14 +8,14 @@ import androidx.viewpager.widget.ViewPager
 import coil.load
 import com.example.pokedex.R
 import com.example.pokedex.databinding.ActivityPokeDetailsBinding
-import com.example.pokedex.service.model.PokemonModel
 import com.example.pokedex.presenter.adapter.SectionsPagerAdapter
+import com.example.pokedex.presenter.model.PokemonViewObject
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
 
 class PokeDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPokeDetailsBinding
-    private var objPoke: PokemonModel = PokemonModel()
+    private lateinit var objPoke: PokemonViewObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class PokeDetailsActivity : AppCompatActivity() {
         val gson = Gson()
         val getIntent = intent.extras
         val data: String? = getIntent?.getString("objPoke")
-        objPoke = gson.fromJson(data, PokemonModel::class.java)
+        objPoke = gson.fromJson(data, PokemonViewObject::class.java)
     }
 
     private fun tabBar() {

@@ -1,4 +1,4 @@
-package com.example.pokedex.service.model
+package com.example.pokedex.presenter.model
 
 import kotlinx.serialization.Serializable
 

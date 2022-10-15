@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentGenerationsBinding
@@ -15,8 +16,9 @@ import com.example.pokedex.service.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class GenerationsFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentGenerationsBinding

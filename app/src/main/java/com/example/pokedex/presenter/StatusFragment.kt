@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentStatusBinding
-import com.example.pokedex.service.model.PokemonModel
+import com.example.pokedex.domain.model.PokemonModel
+import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.viewmodel.StatusViewModel
 import java.text.DecimalFormat
 
@@ -34,18 +35,17 @@ class StatusFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentStatusBinding.inflate(inflater, container, false)
-        configDataActivity(poke)
 
+        configDataActivity()
         return binding.root
     }
 
     companion object {
 
         private const val ARG_SECTION_NUMBER = "section_number"
-        private var poke: PokemonModel = PokemonModel()
-
+        private lateinit var poke: PokemonViewObject
         @JvmStatic
-        fun newInstance(sectionNumber: Int, objPoke: PokemonModel): StatusFragment {
+        fun newInstance(sectionNumber: Int,objPoke: PokemonViewObject): StatusFragment {
 
             return StatusFragment().apply {
                 arguments = Bundle().apply {
@@ -61,7 +61,7 @@ class StatusFragment : Fragment() {
         _binding = null
     }
 
-    private fun configDataActivity(poke: PokemonModel) {
+    private fun configDataActivity() {
         context?.let { binding.textBaseStatusData.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         context?.let { binding.textTypeDefenses.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         changeProgressColor(poke.types[0])
@@ -71,50 +71,50 @@ class StatusFragment : Fragment() {
     }
 
     private fun changeProgressText() {
-        binding.textHpValue.text = poke.baseStatusModel.hp[0].toString()
-        binding.textHpMinValue.text = poke.baseStatusModel.hp[1].toString()
-        binding.textHpMaxValue.text = poke.baseStatusModel.hp[2].toString()
+        binding.textHpValue.text = poke.baseStatus.hp[0].toString()
+        binding.textHpMinValue.text = poke.baseStatus.hp[1].toString()
+        binding.textHpMaxValue.text = poke.baseStatus.hp[2].toString()
 
-        binding.textAttackValue.text = poke.baseStatusModel.attack[0].toString()
-        binding.textAttackMinValue.text = poke.baseStatusModel.attack[1].toString()
-        binding.textAttackMaxValue.text = poke.baseStatusModel.attack[2].toString()
+        binding.textAttackValue.text = poke.baseStatus.attack[0].toString()
+        binding.textAttackMinValue.text = poke.baseStatus.attack[1].toString()
+        binding.textAttackMaxValue.text = poke.baseStatus.attack[2].toString()
 
-        binding.textDefenceValue.text = poke.baseStatusModel.defence[0].toString()
-        binding.textDefenceMinValue.text = poke.baseStatusModel.defence[1].toString()
-        binding.textDefenceMaxValue.text = poke.baseStatusModel.defence[2].toString()
+        binding.textDefenceValue.text = poke.baseStatus.defence[0].toString()
+        binding.textDefenceMinValue.text = poke.baseStatus.defence[1].toString()
+        binding.textDefenceMaxValue.text = poke.baseStatus.defence[2].toString()
 
-        binding.textSpAtkValue.text = poke.baseStatusModel.specialAttack[0].toString()
-        binding.textSpAtkMinValue.text = poke.baseStatusModel.specialAttack[1].toString()
-        binding.textSpAtkMaxValue.text = poke.baseStatusModel.specialAttack[2].toString()
+        binding.textSpAtkValue.text = poke.baseStatus.specialAttack[0].toString()
+        binding.textSpAtkMinValue.text = poke.baseStatus.specialAttack[1].toString()
+        binding.textSpAtkMaxValue.text = poke.baseStatus.specialAttack[2].toString()
 
-        binding.textSpDefValue.text = poke.baseStatusModel.specialDefence[0].toString()
-        binding.textSpDefMinValue.text = poke.baseStatusModel.specialDefence[1].toString()
-        binding.textSpDefMaxValue.text = poke.baseStatusModel.specialDefence[2].toString()
+        binding.textSpDefValue.text = poke.baseStatus.specialDefence[0].toString()
+        binding.textSpDefMinValue.text = poke.baseStatus.specialDefence[1].toString()
+        binding.textSpDefMaxValue.text = poke.baseStatus.specialDefence[2].toString()
 
-        binding.textSpeedValue.text = poke.baseStatusModel.speed[0].toString()
-        binding.textSpeedMinValue.text = poke.baseStatusModel.speed[1].toString()
-        binding.textSpeedMaxValue.text = poke.baseStatusModel.speed[2].toString()
+        binding.textSpeedValue.text = poke.baseStatus.speed[0].toString()
+        binding.textSpeedMinValue.text = poke.baseStatus.speed[1].toString()
+        binding.textSpeedMaxValue.text = poke.baseStatus.speed[2].toString()
 
         val sum =
-            poke.baseStatusModel.hp[0] + poke.baseStatusModel.attack[0] + poke.baseStatusModel.defence[0] +
-                    poke.baseStatusModel.specialAttack[0] + poke.baseStatusModel.specialDefence[0] + poke.baseStatusModel.speed[0]
+            poke.baseStatus.hp[0] + poke.baseStatus.attack[0] + poke.baseStatus.defence[0] +
+                    poke.baseStatus.specialAttack[0] + poke.baseStatus.specialDefence[0] + poke.baseStatus.speed[0]
 
         binding.textTotalValue.text = sum.toString()
     }
 
     private fun changeProgress() {
-        binding.progressbarHp.setProgress(poke.baseStatusModel.hp[0])
-        binding.progressbarHp.max = poke.baseStatusModel.hp[2]
-        binding.progressbarAttack.setProgress(poke.baseStatusModel.attack[0])
-        binding.progressbarAttack.max = poke.baseStatusModel.attack[2]
-        binding.progressbarDefence.setProgress(poke.baseStatusModel.defence[0])
-        binding.progressbarDefence.max = poke.baseStatusModel.defence[2]
-        binding.progressbarSpAtk.setProgress(poke.baseStatusModel.specialAttack[0])
-        binding.progressbarSpAtk.max = poke.baseStatusModel.specialAttack[2]
-        binding.progressbarSpDef.setProgress(poke.baseStatusModel.specialDefence[0])
-        binding.progressbarSpDef.max = poke.baseStatusModel.specialDefence[2]
-        binding.progressbarSpSpeed.setProgress(poke.baseStatusModel.speed[0])
-        binding.progressbarSpSpeed.max = poke.baseStatusModel.speed[2]
+        binding.progressbarHp.setProgress(poke.baseStatus.hp[0])
+        binding.progressbarHp.max = poke.baseStatus.hp[2]
+        binding.progressbarAttack.setProgress(poke.baseStatus.attack[0])
+        binding.progressbarAttack.max = poke.baseStatus.attack[2]
+        binding.progressbarDefence.setProgress(poke.baseStatus.defence[0])
+        binding.progressbarDefence.max = poke.baseStatus.defence[2]
+        binding.progressbarSpAtk.setProgress(poke.baseStatus.specialAttack[0])
+        binding.progressbarSpAtk.max = poke.baseStatus.specialAttack[2]
+        binding.progressbarSpDef.setProgress(poke.baseStatus.specialDefence[0])
+        binding.progressbarSpDef.max = poke.baseStatus.specialDefence[2]
+        binding.progressbarSpSpeed.setProgress(poke.baseStatus.speed[0])
+        binding.progressbarSpSpeed.max = poke.baseStatus.speed[2]
 
     }
 
@@ -135,31 +135,31 @@ class StatusFragment : Fragment() {
 
     private fun changeTypeDefense() {
         binding.textIcNormalEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.normal)
-        binding.textIcFireEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.fire)
-        binding.textIcWaterEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.water)
+            customTextTypeDefence(poke.typeDefences.normal)
+        binding.textIcFireEffectivyValue.text = customTextTypeDefence(poke.typeDefences.fire)
+        binding.textIcWaterEffectivyValue.text = customTextTypeDefence(poke.typeDefences.water)
         binding.textIcElectricEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.electric)
-        binding.textIcGrassEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.grass)
-        binding.textIcIceEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.ice)
+            customTextTypeDefence(poke.typeDefences.electric)
+        binding.textIcGrassEffectivyValue.text = customTextTypeDefence(poke.typeDefences.grass)
+        binding.textIcIceEffectivyValue.text = customTextTypeDefence(poke.typeDefences.ice)
         binding.textIcFightingEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.fighting)
+            customTextTypeDefence(poke.typeDefences.fighting)
         binding.textIcPoisonEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.poison)
+            customTextTypeDefence(poke.typeDefences.poison)
         binding.textIcGroundEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.ground)
+            customTextTypeDefence(poke.typeDefences.ground)
         binding.textIcFlyingEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.flying)
+            customTextTypeDefence(poke.typeDefences.flying)
         binding.textIcPsychicEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.psychic)
-        binding.textIcBugEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.bug)
-        binding.textIcRockEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.rock)
-        binding.textIcGhostEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.ghost)
+            customTextTypeDefence(poke.typeDefences.psychic)
+        binding.textIcBugEffectivyValue.text = customTextTypeDefence(poke.typeDefences.bug)
+        binding.textIcRockEffectivyValue.text = customTextTypeDefence(poke.typeDefences.rock)
+        binding.textIcGhostEffectivyValue.text = customTextTypeDefence(poke.typeDefences.ghost)
         binding.textIcDragonEffectivyValue.text =
-            customTextTypeDefence(poke.typeDefencesModel.dragon)
-        binding.textIcDarkEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.dark)
-        binding.textIcSteelEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.steel)
-        binding.textIcFairyEffectivyValue.text = customTextTypeDefence(poke.typeDefencesModel.fairy)
+            customTextTypeDefence(poke.typeDefences.dragon)
+        binding.textIcDarkEffectivyValue.text = customTextTypeDefence(poke.typeDefences.dark)
+        binding.textIcSteelEffectivyValue.text = customTextTypeDefence(poke.typeDefences.steel)
+        binding.textIcFairyEffectivyValue.text = customTextTypeDefence(poke.typeDefences.fairy)
     }
 
     private fun customTextTypeDefence(value: Float): String {

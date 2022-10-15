@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.databinding.RowPokemonListBinding
 import com.example.pokedex.service.listener.PokeListner
-import com.example.pokedex.service.model.PokemonModel
+import com.example.pokedex.domain.model.PokemonModel
+import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.view.viewholdel.PokeViewHolder
 
 class PokeAdapter : RecyclerView.Adapter<PokeViewHolder>() {
-    private var listPokes: List<PokemonModel> = arrayListOf()
+    private var listPokes: List<PokemonViewObject> = arrayListOf()
     private lateinit var listener:PokeListner
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokeViewHolder {
@@ -26,7 +27,7 @@ class PokeAdapter : RecyclerView.Adapter<PokeViewHolder>() {
         return listPokes.count()
     }
 
-    fun updatePokedexList(list: List<PokemonModel>) {
+    fun updatePokedexList(list: List<PokemonViewObject>) {
         listPokes = list
         notifyDataSetChanged()
     }

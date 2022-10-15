@@ -8,14 +8,15 @@ import coil.load
 import com.example.pokedex.R
 import com.example.pokedex.databinding.RowPokemonListBinding
 import com.example.pokedex.service.listener.PokeListner
-import com.example.pokedex.service.model.PokemonModel
+import com.example.pokedex.domain.model.PokemonModel
+import com.example.pokedex.presenter.model.PokemonViewObject
 
 class PokeViewHolder(
     private val binding: RowPokemonListBinding,
     private val context: Context,
     val listner: PokeListner
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bindData(poke: PokemonModel) {
+    fun bindData(poke: PokemonViewObject) {
 
         changeNumber(poke.id)
         binding.textPokeName.text = poke.name.replaceFirstChar { it.uppercase() }

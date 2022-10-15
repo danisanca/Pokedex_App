@@ -1,9 +1,9 @@
 package com.example.pokedex.service.listener
 
-import com.example.pokedex.service.model.PokemonModel
+import com.example.pokedex.presenter.model.PokemonViewObject
 
 interface PokeListner {
 
-    fun onListClick(objPoke:PokemonModel)
+    fun onListClick(objPoke: PokemonViewObject)
 
 }

@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.pokedex.R
 import com.example.pokedex.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var bindind: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {

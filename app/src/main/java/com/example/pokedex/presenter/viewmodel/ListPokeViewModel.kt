@@ -3,19 +3,26 @@ package com.example.pokedex.presenter.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.pokedex.domain.GetPokemonsUseCase
+import com.example.pokedex.presenter.model.FilterModel
+import com.example.pokedex.presenter.model.PokemonViewObject
+import com.example.pokedex.presenter.model.SecurityPreferences
+import com.example.pokedex.presenter.model.ViewState
 import com.example.pokedex.service.constants.PokedexConstants
-import com.example.pokedex.service.listener.APIListener
-import com.example.pokedex.service.model.FilterModel
-import com.example.pokedex.service.model.PokemonModel
-import com.example.pokedex.service.repository.PokemonRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ListPokeViewModel : ViewModel() {
+@HiltViewModel
+class ListPokeViewModel @Inject constructor(
+    private val getPokemonsUseCase: GetPokemonsUseCase,
+    private val securityPreferences: SecurityPreferences
+) : ViewModel() {
 
-    private val pokemonRepository = PokemonRepository()
-
-    private val _pokemonListData = MutableLiveData<List<PokemonModel>>()
-    private val _pokemonList = MutableLiveData<List<PokemonModel>>()
-    val pokemonModel: LiveData<List<PokemonModel>> = _pokemonList
+    private val _pokemonList = MutableLiveData<List<PokemonViewObject>>()
+    val pokemonModel: LiveData<List<PokemonViewObject>> = _pokemonList
 
     private val _statusMsg = MutableLiveData<String>()
     val statusMsg: LiveData<String> = _statusMsg
@@ -32,47 +39,55 @@ class ListPokeViewModel : ViewModel() {
     private val _optionsSelectedfilters = MutableLiveData<FilterModel>()
     val optionsSelectedfilters: LiveData<FilterModel> = _optionsSelectedfilters
 
+    private val _viewState = MutableLiveData<ViewState>()
+    val viewState: LiveData<ViewState> = _viewState
 
-    fun listPokes() {
+    fun getPokes() {
+        _viewState.postValue(ViewState.LOADING)
 
-        pokemonRepository.list(object : APIListener<List<PokemonModel>> {
-            override fun onSuccess(result: List<PokemonModel>) {
-                _pokemonListData.value = result
-                _pokemonList.value = result
+        viewModelScope.launch(Dispatchers.IO) {
+            getPokemonsUseCase().onSuccess { pokemons ->
+                _pokemonList.postValue(pokemons.map { pokemon ->
+                    PokemonViewObject(pokemon)
+                })
+                _viewState.postValue(ViewState.OK)
+            }.onFailure {
+                _viewState.postValue(ViewState.ERROR)
             }
-
-            override fun onFailure(message: String) {
-                _statusMsg.value = message
-            }
-        })
+            pokemonModel.value?.let { securityPreferences.store("Data", it) }
+        }
     }
 
     fun searchPokeList(namePoke: String) {
-        var newList: MutableList<PokemonModel> = mutableListOf()
-        val old: List<PokemonModel> = _pokemonListData.value!!
+        var newList: MutableList<PokemonViewObject> = mutableListOf()
+        val old: List<PokemonViewObject> = securityPreferences.get("Data")
+        _viewState.postValue(ViewState.LOADING)
 
-        if (namePoke != "") {
+        if (old != null) {
+            if (namePoke != "") {
 
-            var nameToSearch = namePoke.lowercase()
+                var nameToSearch = namePoke.lowercase()
 
-            newList = old.filter {
-                it.name == nameToSearch
-            } as MutableList<PokemonModel>
+                newList = old.filter {
+                    it.name == nameToSearch
+                } as MutableList<PokemonViewObject>
 
-            if (newList.isEmpty()) {
-                newList = old as MutableList<PokemonModel>
+                if (newList.isEmpty()) {
+                    newList = old as MutableList<PokemonViewObject>
+                }
+
+            } else {
+                newList = old as MutableList<PokemonViewObject>
             }
-
-        } else {
-            newList = old as MutableList<PokemonModel>
+            _pokemonList.value = newList
+            _viewState.postValue(ViewState.OK)
         }
-        _pokemonList.value = newList
-
     }
 
-    fun filterPokes() {
-        var newList: MutableList<PokemonModel> = mutableListOf()
-        val old: List<PokemonModel> = _pokemonListData.value!!
+    private fun filterPokes() {
+        _viewState.postValue(ViewState.LOADING)
+        var newList: MutableList<PokemonViewObject> = mutableListOf()
+        val old: List<PokemonViewObject> = securityPreferences.get("Data")
 
         if (filterSelected.value == PokedexConstants.MENUFILTER.GENERATION_OPTION) {
             if (optionSelectedGeneretion.value == PokedexConstants.GENERATION.GEN_1) {
@@ -125,17 +140,18 @@ class ListPokeViewModel : ViewModel() {
                 }
             }
             _pokemonList.value = newList
+
         } else if (filterSelected.value == PokedexConstants.MENUFILTER.SORT_OPTION) {
 
             if (optionSelectedSort.value == PokedexConstants.SORT.SMALLEST) {
-                newList = old as MutableList<PokemonModel>
+                newList = old as MutableList<PokemonViewObject>
             } else if (optionSelectedSort.value == PokedexConstants.SORT.HIGHEST) {
-                newList = old.sortedByDescending { it.id } as MutableList<PokemonModel>
+                newList = old.sortedByDescending { it.id } as MutableList<PokemonViewObject>
 
             } else if (optionSelectedSort.value == PokedexConstants.SORT.A_Z) {
-                newList = old.sortedBy { it.name } as MutableList<PokemonModel>
+                newList = old.sortedBy { it.name } as MutableList<PokemonViewObject>
             } else if (optionSelectedSort.value == PokedexConstants.SORT.Z_A) {
-                newList = old.sortedByDescending { it.name } as MutableList<PokemonModel>
+                newList = old.sortedByDescending { it.name } as MutableList<PokemonViewObject>
             }
 
             _pokemonList.value = newList
@@ -145,7 +161,7 @@ class ListPokeViewModel : ViewModel() {
 
                 newList = old.filter {
                     it.id >= paramsFilter!!.rangeMin && it.id <= paramsFilter.rangeMax
-                } as MutableList<PokemonModel>
+                } as MutableList<PokemonViewObject>
 
                 if (paramsFilter.weight != "") {
                     var newFilterWeigh = newList
@@ -155,19 +171,19 @@ class ListPokeViewModel : ViewModel() {
 
                     newList = newFilterWeigh.filter {
                         it.weight in minWeight..maxWeight
-                    } as MutableList<PokemonModel>
+                    } as MutableList<PokemonViewObject>
                 }
                 if (paramsFilter.height != "") {
                     var newFilterHeigh = newList
-                    var HeightsConvert = alturaPokes(paramsFilter.weight)
+                    var HeightsConvert = alturaPokes(paramsFilter.height)
                     var minHeight = HeightsConvert[0]
                     var maxHeight = HeightsConvert[1]
                     newList = newFilterHeigh.filter {
-                        it.weight in minHeight..maxHeight
-                    } as MutableList<PokemonModel>
+                        it.height in minHeight..maxHeight
+                    } as MutableList<PokemonViewObject>
                 }
                 if (paramsFilter.types.isNotEmpty()) {
-                    var newFiltertypesList: MutableList<PokemonModel> = mutableListOf()
+                    var newFiltertypesList: MutableList<PokemonViewObject> = mutableListOf()
 
                     newList.map { pokemonList ->
                         paramsFilter.types.map { typeList ->
@@ -185,6 +201,7 @@ class ListPokeViewModel : ViewModel() {
             _pokemonList.value = old
         }
 
+        _viewState.postValue(ViewState.OK)
     }
 
     fun pesoPokes(value: String): List<Float> {

@@ -1,5 +1,7 @@
 package com.example.pokedex.presenter
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -8,21 +10,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.databinding.FragmentListPokeBinding
-import com.example.pokedex.service.listener.PokeListner
-import com.example.pokedex.service.model.PokemonModel
 import com.example.pokedex.presenter.adapter.PokeAdapter
+import com.example.pokedex.presenter.model.PokemonViewObject
+import com.example.pokedex.presenter.model.ViewState
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
+import com.example.pokedex.service.listener.PokeListner
 import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListPokeFragment : Fragment() {
 
     private lateinit var binding: FragmentListPokeBinding
     private val viewModel: ListPokeViewModel by activityViewModels()
     private val adapter = PokeAdapter()
+    private lateinit var statePage: ViewState
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +38,7 @@ class ListPokeFragment : Fragment() {
     ): View? {
         binding = FragmentListPokeBinding.inflate(layoutInflater, container, false)
 
-        viewModel.listPokes()
+        viewModel.getPokes()
 
         return binding.root
     }
@@ -50,9 +57,8 @@ class ListPokeFragment : Fragment() {
         binding.btnSort.setOnClickListener {
             SortFragment().show(parentFragmentManager, "BottomSheetDialog")
         }
-
         val listener = object : PokeListner {
-            override fun onListClick(poke: PokemonModel) {
+            override fun onListClick(poke: PokemonViewObject) {
                 val gson = Gson()
                 val listPoke = gson.toJson(poke)
                 startActivity(
@@ -76,11 +82,44 @@ class ListPokeFragment : Fragment() {
     }
 
     private fun observers() {
-        viewModel.pokemonModel.observe(viewLifecycleOwner) {
-            adapter.updatePokedexList(it)
-        }
+
         viewModel.statusMsg.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
+        viewModel.viewState.observe(viewLifecycleOwner) {
+            statePage = it
+            setViewState()
+        }
+    }
+
+    private fun setViewState() {
+        when (statePage) {
+            ViewState.LOADING -> setLoadingState()
+            ViewState.OK -> setOkState()
+            ViewState.ERROR -> setErrorState()
+        }
+    }
+
+    private fun setLoadingState() {
+        binding.loading.isVisible = true
+    }
+
+    private fun setOkState() {
+        binding.loading.isVisible = false
+        viewModel.pokemonModel.observe(viewLifecycleOwner) {
+            adapter.updatePokedexList(it)
+        }
+    }
+
+    private fun setErrorState() {
+
+        AlertDialog.Builder(requireContext()).setMessage("Erro ao tentar recuperar")
+            .setPositiveButton("Tentar novamente", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    binding.loading.isVisible = true
+                    viewModel.getPokes()
+                }
+            }).setCancelable(false)
+            .show()
     }
 }
