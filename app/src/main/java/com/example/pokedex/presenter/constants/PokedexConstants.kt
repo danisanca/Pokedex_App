@@ -1,4 +1,4 @@
-package com.example.pokedex.service.constants
+package com.example.pokedex.presenter.constants
 
 class PokedexConstants private constructor() {
 

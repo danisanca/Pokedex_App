@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentSortBinding
-import com.example.pokedex.service.constants.PokedexConstants
+import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -42,6 +42,7 @@ class SortFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.btnHighestNumberFirst.setOnClickListener {
             itemSelected = binding.btnHighestNumberFirst.id
@@ -50,6 +51,7 @@ class SortFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.btnAToZ.setOnClickListener {
             itemSelected = binding.btnAToZ.id
@@ -58,6 +60,7 @@ class SortFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.btnZToA.setOnClickListener {
             itemSelected = binding.btnZToA.id
@@ -66,6 +69,7 @@ class SortFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
     }
 

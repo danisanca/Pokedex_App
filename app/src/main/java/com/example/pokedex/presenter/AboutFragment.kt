@@ -9,20 +9,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentAboutBinding
 import com.example.pokedex.presenter.model.PokemonViewObject
-import com.example.pokedex.presenter.viewmodel.AboutViewModel
+import com.example.pokedex.presenter.viewmodel.PokeDetailsViewModel
 
 
 class AboutFragment : Fragment() {
 
-    private lateinit var aboutViewModel: AboutViewModel
+    private lateinit var aboutViewModel: PokeDetailsViewModel
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+        aboutViewModel = ViewModelProvider(this).get(PokeDetailsViewModel::class.java).apply {
+            setIndexAbout(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
 

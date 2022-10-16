@@ -11,21 +11,21 @@ import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentStatusBinding
 import com.example.pokedex.domain.model.PokemonModel
 import com.example.pokedex.presenter.model.PokemonViewObject
-import com.example.pokedex.presenter.viewmodel.StatusViewModel
+import com.example.pokedex.presenter.viewmodel.PokeDetailsViewModel
 import java.text.DecimalFormat
 
 
 class StatusFragment : Fragment() {
 
-    private lateinit var pageViewModel: StatusViewModel
+    private lateinit var pageViewModel: PokeDetailsViewModel
     private var _binding: FragmentStatusBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        pageViewModel = ViewModelProvider(this).get(StatusViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+        pageViewModel = ViewModelProvider(this).get(PokeDetailsViewModel::class.java).apply {
+            setIndexStatus(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
 

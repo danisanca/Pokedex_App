@@ -12,7 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentFiltersBinding
-import com.example.pokedex.service.constants.PokedexConstants
+import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior

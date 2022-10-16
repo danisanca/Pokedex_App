@@ -9,7 +9,7 @@ import com.example.pokedex.presenter.model.FilterModel
 import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.SecurityPreferences
 import com.example.pokedex.presenter.model.ViewState
-import com.example.pokedex.service.constants.PokedexConstants
+import com.example.pokedex.presenter.constants.PokedexConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

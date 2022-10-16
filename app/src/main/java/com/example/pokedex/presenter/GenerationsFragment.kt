@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentGenerationsBinding
-import com.example.pokedex.service.constants.PokedexConstants
+import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -50,6 +50,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxSecondGen.setOnClickListener{
             itemSelected = binding.boxSecondGen.id
@@ -58,6 +59,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxThirdGen.setOnClickListener{
             itemSelected = binding.boxThirdGen.id
@@ -66,6 +68,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxFourGen.setOnClickListener{
             itemSelected = binding.boxFourGen.id
@@ -74,6 +77,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxFiveGen.setOnClickListener{
             itemSelected = binding.boxFiveGen.id
@@ -82,6 +86,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxSixGen.setOnClickListener{
             itemSelected = binding.boxSixGen.id
@@ -90,6 +95,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxSevenGen.setOnClickListener{
             itemSelected = binding.boxSevenGen.id
@@ -98,6 +104,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         binding.boxEightGen.setOnClickListener{
             itemSelected = binding.boxEightGen.id
@@ -106,6 +113,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
+            dismiss()
         }
         Observers()
     }
@@ -132,6 +140,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
     }
 
     private fun changeItemMenu(itemBox: Int?) {
+
         if (itemBox != null) {
 
             listBoxItems.map {
@@ -151,6 +160,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                     }
                 }
             }
+
         }
     }
 

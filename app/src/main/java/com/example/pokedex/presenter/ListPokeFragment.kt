@@ -15,11 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.databinding.FragmentListPokeBinding
-import com.example.pokedex.presenter.adapter.PokeAdapter
+import com.example.pokedex.presenter.adapter.PokedexAdapter
 import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.ViewState
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
-import com.example.pokedex.service.listener.PokeListner
+import com.example.pokedex.presenter.listener.PokeListner
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +28,7 @@ class ListPokeFragment : Fragment() {
 
     private lateinit var binding: FragmentListPokeBinding
     private val viewModel: ListPokeViewModel by activityViewModels()
-    private val adapter = PokeAdapter()
+    private val adapter = PokedexAdapter()
     private lateinit var statePage: ViewState
 
     override fun onCreateView(
