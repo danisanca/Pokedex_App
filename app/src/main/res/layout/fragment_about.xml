@@ -5,7 +5,8 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/style_up_corner_rounded"
+    android:backgroundTint="@color/white"
     android:padding="32dp"
     tools:context=".presenter.AboutFragment">
 

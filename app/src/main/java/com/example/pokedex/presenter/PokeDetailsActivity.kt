@@ -1,9 +1,16 @@
 package com.example.pokedex.presenter
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
+import androidx.palette.graphics.Palette
 import androidx.viewpager.widget.ViewPager
 import coil.load
 import com.example.pokedex.R
@@ -139,6 +146,8 @@ class PokeDetailsActivity : AppCompatActivity() {
         binding.appBarLayout.backgroundTintList =
             ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
         binding.appbarMenu.backgroundTintList =
+            ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
+        binding.viewPager.backgroundTintList =
             ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
     }
 

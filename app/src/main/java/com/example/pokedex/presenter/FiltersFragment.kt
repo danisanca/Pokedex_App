@@ -16,6 +16,7 @@ import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
@@ -32,23 +33,27 @@ class FiltersFragment : BottomSheetDialogFragment(){
     private var rangeMinSelected: Int? = null
     private var rangeMaxSelected: Int? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentFiltersBinding.inflate(layoutInflater)
         genListTypes()
         genListHeight()
         genListWeight()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         val layout = binding.bottomSheetLayout
         layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
         Observers()

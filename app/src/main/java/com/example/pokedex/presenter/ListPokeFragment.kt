@@ -14,12 +14,15 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokedex.R
+import com.example.pokedex.databinding.FragmentFiltersBinding
 import com.example.pokedex.databinding.FragmentListPokeBinding
 import com.example.pokedex.presenter.adapter.PokedexAdapter
 import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.ViewState
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.example.pokedex.presenter.listener.PokeListner
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,9 +56,11 @@ class ListPokeFragment : Fragment() {
         }
         binding.btnFilter.setOnClickListener {
             FiltersFragment().show(parentFragmentManager, "BottomSheetDialog")
+
         }
         binding.btnSort.setOnClickListener {
             SortFragment().show(parentFragmentManager, "BottomSheetDialog")
+
         }
         val listener = object : PokeListner {
             override fun onListClick(poke: PokemonViewObject) {

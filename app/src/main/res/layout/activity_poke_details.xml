@@ -90,7 +90,7 @@
                     android:id="@+id/type_one_details"
                     android:layout_width="85dp"
                     android:layout_height="25dp"
-                    android:background="@drawable/style_rounded_type"
+                    android:background="@drawable/style_all_corner_rounded"
                     android:backgroundTint="@color/typeGrass"
                     tools:drawableStart="@drawable/ic_grass"
                     android:drawablePadding="4dp"
@@ -109,7 +109,7 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/typePoison"
-                    android:background="@drawable/style_rounded_type"
+                    android:background="@drawable/style_all_corner_rounded"
                     tools:drawableStart="@drawable/ic_poison"
                     android:layout_marginTop="4dp"
                     android:drawablePadding="4dp"
@@ -162,6 +162,7 @@
                android:id="@+id/appbar_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:elevation="0dp"
                 android:background="@color/bkgTypeGrass"
                 android:theme="@style/Theme.Pokedex.AppBarOverlay">
 
@@ -176,10 +177,9 @@
             </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="760dp"
-        android:background="@drawable/style_rounded_details"
-        android:backgroundTint="@color/white"
+        android:background="@color/teal_200"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

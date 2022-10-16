@@ -26,6 +26,10 @@ class GenerationsFragment : BottomSheetDialogFragment() {
     private val listBoxItems: MutableList<ImageView> = mutableListOf<ImageView>()
     private val listViewModel: ListPokeViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +43,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         val layout = binding.bottomSheetLayout
         layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
 

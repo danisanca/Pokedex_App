@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetLayout"
     android:layout_width="match_parent"
+    android:background="@drawable/style_up_corner_rounded"
+    android:backgroundTint="@color/white"
     android:layout_height="match_parent"
 
     tools:context=".presenter.GenerationsFragment">
@@ -34,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/frag_gen_sub_title"
+            android:textColor="@color/textGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_title" />
@@ -43,7 +46,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_sub_title"/>
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_i"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_one_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_one_gen"
@@ -74,7 +78,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_sub_title"/>
@@ -95,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_ii"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_second_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_second_gen"
@@ -105,7 +110,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_one_gen"/>
@@ -126,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_iii"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_third_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_third_gen"
@@ -136,7 +142,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_second_gen"/>
@@ -157,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_iv"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_four_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_four_gen"
@@ -167,7 +174,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_third_gen"/>
@@ -189,6 +196,7 @@
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_v"
             android:textStyle="bold"
+            android:textColor="@color/textGray"
             app:layout_constraintBottom_toBottomOf="@+id/box_five_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_five_gen"
             app:layout_constraintStart_toStartOf="@id/box_five_gen" />
@@ -198,7 +206,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_four_gen"/>
@@ -219,6 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_vi"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_six_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_six_gen"
@@ -229,7 +238,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_five_gen"/>
@@ -250,6 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_vii"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_seven_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_seven_gen"
@@ -260,7 +270,7 @@
             android:layout_width="160dp"
             android:layout_height="129dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bkg_style_rounded_type"
+            android:background="@drawable/style_generetion_buttom_rounded_type"
             android:backgroundTint="@color/backgroudInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_six_gen"/>
@@ -281,6 +291,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/frag_gen_generation_viii"
+            android:textColor="@color/textGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/box_eight_gen"
             app:layout_constraintEnd_toEndOf="@+id/box_eight_gen"

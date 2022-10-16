@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheetLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presenter.FiltersFragment">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/style_rounded_details"
+    android:layout_height="wrap_content"
+    android:background="@drawable/style_up_corner_rounded"
     android:paddingTop="32dp"
     android:paddingStart="32dp"
-    android:paddingBottom="32dp">
+    android:paddingBottom="32dp"
+    android:backgroundTint="@color/white"
+    tools:context=".presenter.FiltersFragment">
+
+
 
     <TextView
         android:id="@+id/text_title"
@@ -32,6 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/frag_filter_sub_title"
+        android:textColor="@color/textGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_title" />
@@ -75,7 +75,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_bug"
             app:tint="@color/typeBug"/>
 
@@ -86,7 +86,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_dark"
             app:tint="@color/typeDark"
             />
@@ -96,7 +96,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="4dp"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:backgroundTint="@color/white"
             android:padding="15dp"
             android:src="@drawable/ic_dragon"
@@ -109,7 +109,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_electric"
             app:tint="@color/typeElectric"
             />
@@ -120,7 +120,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_fairy"
             app:tint="@color/typeFairy"
             />
@@ -131,7 +131,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_fighting"
             app:tint="@color/typeFighting"
             />
@@ -142,7 +142,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_fire"
             app:tint="@color/typeFire"
             />
@@ -153,7 +153,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_flying"
             app:tint="@color/typeFlying"
             />
@@ -164,7 +164,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_ghost"
             app:tint="@color/typeGhost"
             />
@@ -176,7 +176,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_grass"
             app:tint="@color/typeGrass"
             />
@@ -187,7 +187,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_ground"
             app:tint="@color/typeGround"
             />
@@ -198,7 +198,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_ice"
             app:tint="@color/typeIce"
             />
@@ -209,7 +209,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_normal"
             app:tint="@color/typeNormal"
             />
@@ -220,7 +220,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_poison"
             app:tint="@color/typePoison"
             />
@@ -231,7 +231,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_psychic"
             app:tint="@color/typePsychic"
             />
@@ -242,7 +242,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_rock"
             app:tint="@color/typeRock"
             />
@@ -253,7 +253,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_steel"
             app:tint="@color/typeSteel"
             />
@@ -264,7 +264,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_water"
             app:tint="@color/typeWater"
             />
@@ -300,7 +300,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_short_hei"
             app:tint="@color/heightShort"
             />
@@ -311,7 +311,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_medium_hei"
             app:tint="@color/heightMedium"
             />
@@ -322,7 +322,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_tall_hei"
             app:tint="@color/heightTall"
             />
@@ -358,7 +358,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_light_wei"
             app:tint="@color/weightLight"
             />
@@ -369,7 +369,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_normal_wei"
             app:tint="@color/weightNormal"
             />
@@ -380,7 +380,7 @@
             android:padding="15dp"
             android:layout_marginEnd="4dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/bkg_style_circle"
+            android:background="@drawable/style_circle"
             android:src="@drawable/ic_heavy_wei"
             app:tint="@color/weightHeavy"
             />
@@ -444,6 +444,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_reset"
         app:layout_constraintTop_toTopOf="@+id/btn_reset" />
-</androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,10 @@ class SortFragment : BottomSheetDialogFragment() {
     private val listButton: MutableList<Button> = mutableListOf<Button>()
     private val listViewModel: ListPokeViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
