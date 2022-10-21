@@ -1,63 +1,65 @@
 package com.example.pokedex.presenter
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
-import androidx.palette.graphics.Palette
+import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import coil.load
 import com.example.pokedex.R
-import com.example.pokedex.databinding.ActivityPokeDetailsBinding
+import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.presenter.adapter.SectionsPagerAdapter
 import com.example.pokedex.presenter.model.PokemonViewObject
 import com.google.android.material.tabs.TabLayout
-import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 
-class PokeDetailsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPokeDetailsBinding
+
+@AndroidEntryPoint
+class DetailsFragment : Fragment() {
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding get() = _binding!!
+
+
     private lateinit var objPoke: PokemonViewObject
+    private val args:DetailsFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityPokeDetailsBinding.inflate(layoutInflater)
-
-        setContentView(binding.root)
-        extrasIntent()
-        configActivity()
-        setSupportActionBar(binding.toolbarLayout)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        objPoke = args.pokemon
+        _binding = FragmentDetailsBinding.inflate(layoutInflater,container,false)
         tabBar()
-
+        return binding.root
     }
 
-    private fun extrasIntent() {
-        val gson = Gson()
-        val getIntent = intent.extras
-        val data: String? = getIntent?.getString("objPoke")
-        objPoke = gson.fromJson(data, PokemonViewObject::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        configActivity()
     }
+
 
     private fun tabBar() {
         val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = SectionsPagerAdapter(this, supportFragmentManager, objPoke)
+        viewPager.adapter = SectionsPagerAdapter(this, parentFragmentManager, objPoke)
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-    }
 
+    }
     private fun configActivity() {
         changeNumber(objPoke.id)
         binding.textPokeNameDetails.text = objPoke.name.replaceFirstChar { it.uppercase() }
         binding.imgPokeDetails.load(objPoke.image)
         changeNameType(objPoke.types)
         changeColor(objPoke.types)
+        (activity as AppCompatActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(requireContext(), backgroundTypeColor(objPoke.types[0]))))
     }
 
     private fun changeNumber(id: Int) {
@@ -115,9 +117,9 @@ class PokeDetailsActivity : AppCompatActivity() {
             colorOne = types[0]
             colorTwo = types[1]
             binding.typeOneDetails.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, typeColor(colorOne))
+                ContextCompat.getColorStateList(requireContext(), typeColor(colorOne))
             binding.typeTwoDetails.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, typeColor(colorTwo))
+                ContextCompat.getColorStateList(requireContext(), typeColor(colorTwo))
             binding.typeOneDetails.setCompoundDrawablesWithIntrinsicBounds(
                 typeIcon(colorOne),
                 0,
@@ -134,7 +136,7 @@ class PokeDetailsActivity : AppCompatActivity() {
         } else {
             colorOne = types[0]
             binding.typeOneDetails.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, typeColor(colorOne))
+                ContextCompat.getColorStateList(requireContext(), typeColor(colorOne))
             binding.typeOneDetails.setCompoundDrawablesWithIntrinsicBounds(
                 typeIcon(colorOne),
                 0,
@@ -144,11 +146,11 @@ class PokeDetailsActivity : AppCompatActivity() {
             binding.typeTwoDetails.isVisible = false
         }
         binding.appBarLayout.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
+            ContextCompat.getColorStateList(requireContext(), backgroundTypeColor(colorOne))
         binding.appbarMenu.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
+            ContextCompat.getColorStateList(requireContext(), backgroundTypeColor(colorOne))
         binding.viewPager.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, backgroundTypeColor(colorOne))
+            ContextCompat.getColorStateList(requireContext(), backgroundTypeColor(colorOne))
     }
 
     fun typeColor(color: String): Int {
@@ -198,5 +200,10 @@ class PokeDetailsActivity : AppCompatActivity() {
             else -> return R.color.teal_200
         }
     }
-}
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+}

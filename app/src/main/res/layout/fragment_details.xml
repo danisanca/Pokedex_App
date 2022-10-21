@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presenter.DetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/bkgTypeGrass"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+        android:layout_height="300dp">
+
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginBottom="20dp"
+            app:expandedTitleMarginStart="15dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="40dp"
+                    android:src="@drawable/circle_detais"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_poke_details"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center_vertical"
+                    tools:src="@drawable/poke_01"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_poke_number_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    tools:text="#001"
+                    android:textColor="@color/textGray"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/img_poke_details"
+                    app:layout_constraintTop_toTopOf="@+id/img_poke_details" />
+
+                <ImageView
+                    android:id="@+id/img_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/details2_card"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/type_two_details" />
+
+                <TextView
+                    android:id="@+id/text_poke_name_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    tools:text="Bulbasaur"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/img_poke_details"
+                    app:layout_constraintTop_toBottomOf="@+id/text_poke_number_details" />
+
+                <TextView
+                    android:id="@+id/type_one_details"
+                    android:layout_width="85dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/style_all_corner_rounded"
+                    android:backgroundTint="@color/typeGrass"
+                    tools:drawableStart="@drawable/ic_grass"
+                    android:drawablePadding="4dp"
+                    android:layout_marginTop="4dp"
+                    android:padding="4dp"
+                    tools:text="Fighting"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@id/text_poke_name_details"
+                    app:layout_constraintTop_toBottomOf="@id/text_poke_name_details" />
+
+                <TextView
+                    android:id="@+id/type_two_details"
+                    android:visibility="invisible"
+                    android:layout_width="85dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/typePoison"
+                    android:background="@drawable/style_all_corner_rounded"
+                    tools:drawableStart="@drawable/ic_poison"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:padding="4dp"
+                    tools:text="Grass"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/type_one_details"
+                    app:layout_constraintTop_toBottomOf="@id/text_poke_name_details" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/title_background"/>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nesteScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".presenter.PokeDetailsActivity">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp"
+                android:background="@color/bkgTypeGrass"
+                android:theme="@style/Theme.Pokedex.AppBarOverlay">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabTextColor="@color/textGray"
+                    app:tabSelectedTextColor="@color/white"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.appbar.AppBarLayout>
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="wrap_content"
+                android:layout_height="760dp"
+                android:background="@color/teal_200"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

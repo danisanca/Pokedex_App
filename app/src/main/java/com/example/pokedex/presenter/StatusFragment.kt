@@ -56,11 +56,6 @@ class StatusFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun configDataActivity() {
         context?.let { binding.textBaseStatusData.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         context?.let { binding.textTypeDefenses.setTextColor(it.getColor(typeColor(poke.types[0]))) }
@@ -200,5 +195,9 @@ class StatusFragment : Fragment() {
             "water" -> return R.color.typeWater
             else -> return R.color.teal_200
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

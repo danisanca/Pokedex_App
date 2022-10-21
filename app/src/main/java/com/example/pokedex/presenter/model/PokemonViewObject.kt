@@ -1,11 +1,10 @@
 package com.example.pokedex.presenter.model
 
-import com.example.pokedex.data.model.BaseStatusRemoteModel
-import com.example.pokedex.data.model.BreedingsRemoteModel
-import com.example.pokedex.data.model.TrainingRemoteModel
-import com.example.pokedex.data.model.TypeDefenceRemoteModel
+import android.os.Parcelable
 import com.example.pokedex.domain.model.*
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class PokemonViewObject(
     val id: Int,
     val name: String,
@@ -15,12 +14,14 @@ data class PokemonViewObject(
     val weight: Float,
     val species: String,
     val types: List<String>,
-    val training: TrainingRemoteModel,
-    val breeding: BreedingsRemoteModel,
-    val baseStatus: BaseStatusRemoteModel,
-    val typeDefences: TypeDefenceRemoteModel,
-){
-    constructor(pokemon:PokemonModel):this(
+    val training: Training,
+    val breeding: Breedings,
+    val baseStatus: BaseStatus,
+    val typeDefences: TypeDefence,
+    val resourcesType: List<PokemonReources>,
+    val mainType: PokemonReources,
+) : Parcelable {
+    constructor(pokemon: PokemonModel) : this(
         id = pokemon.id,
         name = pokemon.name,
         image = pokemon.image,
@@ -29,13 +30,16 @@ data class PokemonViewObject(
         weight = pokemon.weight,
         species = pokemon.species,
         types = pokemon.types,
-        training = pokemon.training,
-        breeding = pokemon.breeding,
-        baseStatus = pokemon.baseStatus,
-        typeDefences = pokemon.typeDefences,
-        )
+        training = trainingToDomain(pokemon.training),
+        breeding = breedingsToDomain(pokemon.breeding),
+        baseStatus = baseStatusToDomain(pokemon.baseStatus),
+        typeDefences = typeDefenceToDomain(pokemon.typeDefences),
+        resourcesType = pokemon.types.map {pokemon ->
+            PokemonReources.getPokemonType(pokemon)
+        },
+        mainType = PokemonReources.getPokemonType(pokemon.types[0])
+    )
 }
-
 
 
 

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
+import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentSortBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
@@ -16,7 +17,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
 class SortFragment : BottomSheetDialogFragment() {
-    private lateinit var binding: FragmentSortBinding
+    private var _binding: FragmentSortBinding? = null
+    private val binding get() = _binding!!
     private var itemSelected: Int? = null
     private val listButton: MutableList<Button> = mutableListOf<Button>()
     private val listViewModel: ListPokeViewModel by activityViewModels()
@@ -30,7 +32,7 @@ class SortFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSortBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentSortBinding.inflate(layoutInflater, container, false)
         genListItemsMenu()
 
         return binding.root
@@ -75,6 +77,10 @@ class SortFragment : BottomSheetDialogFragment() {
             changeItemMenu(itemSelected)
             dismiss()
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun Observers() {

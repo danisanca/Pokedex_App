@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
+import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentFiltersBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
@@ -20,10 +21,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FiltersFragment : BottomSheetDialogFragment(){
-    private lateinit var binding: FragmentFiltersBinding
+class FiltersFragment : BottomSheetDialogFragment() {
+    private var _binding: FragmentFiltersBinding? = null
+    private val binding get() = _binding!!
     private val listViewModel: ListPokeViewModel by activityViewModels()
-
     private val listTypes: MutableList<ImageView> = mutableListOf<ImageView>()
     private val listHeights: MutableList<ImageView> = mutableListOf<ImageView>()
     private val listWeights: MutableList<ImageView> = mutableListOf<ImageView>()
@@ -35,15 +36,16 @@ class FiltersFragment : BottomSheetDialogFragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentFiltersBinding.inflate(layoutInflater)
+        _binding = FragmentFiltersBinding.inflate(layoutInflater)
         genListTypes()
         genListHeight()
         genListWeight()
@@ -413,5 +415,9 @@ class FiltersFragment : BottomSheetDialogFragment(){
         }
         changeColorType(itemId)
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

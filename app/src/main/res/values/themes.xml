@@ -24,4 +24,8 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="ToolbarColoredBackArrow" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="android:textColorSecondary">@color/textGray</item>
+    </style>
+
 </resources>

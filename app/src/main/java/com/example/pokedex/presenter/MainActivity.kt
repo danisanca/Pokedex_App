@@ -1,32 +1,39 @@
 package com.example.pokedex.presenter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.pokedex.R
 import com.example.pokedex.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var bindind: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindind = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        chageFragment(ListPokeFragment())
+        setSupportActionBar(binding.myToolBar)
 
-        supportActionBar?.hide()
-        setContentView(bindind.root)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        setContentView(binding.root)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun chageFragment(fragment: Fragment){
-        val fragmentManager:FragmentManager = supportFragmentManager
-        val fragmentTransaction:FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
-        fragmentTransaction.commit()
-
-    }
 }

@@ -20,7 +20,8 @@ data class PokemonRemoteModel(
     @SerializedName("typeDefences") val typeDefences: TypeDefenceRemoteModel
 )
 
-fun PokemonRemoteModel.toDomain() = PokemonModel(
+fun PokemonRemoteModel.toDomain() :PokemonModel {
+    return PokemonModel(
     id = this.id,
     name = this.name,
     image = this.image,
@@ -29,11 +30,12 @@ fun PokemonRemoteModel.toDomain() = PokemonModel(
     weight = this.weight,
     species = this.species,
     types = this.types,
-    training = this.training,
-    breeding = this.breeding,
-    baseStatus = this.baseStatus,
-    typeDefences = this.typeDefences
+    training = this.training.toDomain() ,
+    breeding = this.breeding.toDomain() ,
+    baseStatus = this.baseStatus.toDomain() ,
+    typeDefences = this.typeDefences.toDomain()
 )
+}
 
 
 

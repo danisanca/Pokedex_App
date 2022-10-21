@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
+import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentGenerationsBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
@@ -20,8 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GenerationsFragment : BottomSheetDialogFragment() {
+    private var _binding: FragmentGenerationsBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var binding: FragmentGenerationsBinding
     private var itemSelected: Int? = null
     private val listBoxItems: MutableList<ImageView> = mutableListOf<ImageView>()
     private val listViewModel: ListPokeViewModel by activityViewModels()
@@ -35,7 +37,7 @@ class GenerationsFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGenerationsBinding.inflate(layoutInflater)
+        _binding = FragmentGenerationsBinding.inflate(layoutInflater)
         genListItemsMenu()
         return binding.root
     }
@@ -177,5 +179,10 @@ class GenerationsFragment : BottomSheetDialogFragment() {
         listBoxItems.add(binding.boxSixGen)
         listBoxItems.add(binding.boxSevenGen)
         listBoxItems.add(binding.boxEightGen)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

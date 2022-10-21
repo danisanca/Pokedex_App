@@ -71,11 +71,11 @@ class AboutFragment : Fragment() {
         binding.textWeightValue.text = poke.weight.toString() + "Kg"
         context?.let { binding.textTraining.setTextColor(it.getColor(typeColor(poke.types[0]))) }
         binding.textEVYieldValue.text = poke.training.evYield
-        binding.textCatchRateTextValue.text = poke.training.catchRateModel.value.toString()
-        binding.textCatchRateValue.text = poke.training.catchRateModel.text
+        binding.textCatchRateTextValue.text = poke.training.catchRate.value.toString()
+        binding.textCatchRateValue.text = poke.training.catchRate.text
         binding.textBaseFriendshipTextValue.text =
-            poke.training.baseFriendshipModel.value.toString()
-        binding.textBaseFriendshipValue.text = poke.training.baseFriendshipModel.text
+            poke.training.baseFriendship.value.toString()
+        binding.textBaseFriendshipValue.text = poke.training.baseFriendship.text
         binding.textBaseExpValue.text = poke.training.baseExp.toString()
         binding.textGrowthRateValue.text = poke.training.growthRate
         context?.let { binding.textBreeding.setTextColor(it.getColor(typeColor(poke.types[0]))) }
