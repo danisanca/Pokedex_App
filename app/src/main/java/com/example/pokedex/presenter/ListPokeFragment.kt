@@ -2,7 +2,6 @@ package com.example.pokedex.presenter
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
@@ -16,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.R
@@ -40,11 +38,10 @@ class ListPokeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentListPokeBinding.inflate(layoutInflater, container, false)
-
-        viewModel.getPokes()
+        viewModel.listPokemon()
 
         return binding.root
     }
@@ -52,7 +49,7 @@ class ListPokeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(
-            ContextCompat.getColor(requireContext(),R.color.white)))
+            ContextCompat.getColor(requireContext(), R.color.white)))
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
@@ -61,18 +58,18 @@ class ListPokeFragment : Fragment() {
         }
         binding.btnFilter.setOnClickListener {
             FiltersFragment().show(parentFragmentManager, "BottomSheetDialog")
-
         }
         binding.btnSort.setOnClickListener {
-           SortFragment().show(parentFragmentManager, "BottomSheetDialog")
+            SortFragment().show(parentFragmentManager, "BottomSheetDialog")
 
         }
         val listener = object : PokeListner {
             override fun onListClick(poke: PokemonViewObject) {
                 val gson = Gson()
                 val listPoke = gson.toJson(poke)
-                val direction = ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(poke)
-               findNavController().navigate(direction)
+                val direction =
+                    ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(poke)
+                findNavController().navigate(direction)
             }
         }
         adapter.attachListener(listener)
@@ -88,8 +85,6 @@ class ListPokeFragment : Fragment() {
     }
 
     private fun observers() {
-
-
         viewModel.statusMsg.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
@@ -119,12 +114,11 @@ class ListPokeFragment : Fragment() {
     }
 
     private fun setErrorState() {
-
         AlertDialog.Builder(requireContext()).setMessage("Erro ao tentar recuperar")
             .setPositiveButton("Tentar novamente", object : DialogInterface.OnClickListener {
                 override fun onClick(p0: DialogInterface?, p1: Int) {
                     binding.loading.isVisible = true
-                    viewModel.getPokes()
+                    viewModel.listPokemon()
                 }
             }).setCancelable(false)
             .show()

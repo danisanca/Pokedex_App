@@ -2,7 +2,6 @@ package com.example.pokedex.presenter.model
 
 import android.os.Parcelable
 import com.example.pokedex.domain.model.TrainingModel
-import com.example.pokedex.domain.model.TypeDefenceModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -12,10 +11,10 @@ data class Training(
     var catchRate: CatchRate,
     var baseFriendship: BaseFriendship,
     var baseExp: Int,
-    var growthRate: String
+    var growthRate: String,
 ) : Parcelable
 
-fun trainingToDomain(trainingModel: TrainingModel) : Training {
+fun trainingToDomain(trainingModel: TrainingModel): Training {
     return Training(
         evYield = trainingModel.evYield,
         catchRate = catchRateToDomain(trainingModel.catchRateModel),

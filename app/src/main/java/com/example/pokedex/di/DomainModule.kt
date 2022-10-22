@@ -13,6 +13,6 @@ abstract class DomainModule {
 
     @Binds
     abstract fun bindsPokedexRepository(
-       pokedexRepositoryImpl: PokedexRepositoryImpl
+        pokedexRepositoryImpl: PokedexRepositoryImpl,
     ): PokedexRepository
 }

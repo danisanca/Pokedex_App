@@ -1,7 +1,6 @@
 package com.example.pokedex.presenter.model
 
 import android.os.Parcelable
-import com.example.pokedex.domain.model.BaseFriendshipModel
 import com.example.pokedex.domain.model.BreedingsModel
 import kotlinx.parcelize.Parcelize
 
@@ -9,10 +8,10 @@ import kotlinx.parcelize.Parcelize
 data class Breedings(
     val eggGroups: List<String>,
     val genderModel: Gender,
-    val eggCyclesModel: EggCycle
+    val eggCyclesModel: EggCycle,
 ) : Parcelable
 
-fun breedingsToDomain(breedingsModel: BreedingsModel) : Breedings {
+fun breedingsToDomain(breedingsModel: BreedingsModel): Breedings {
     return Breedings(
         eggGroups = breedingsModel.eggGroups,
         genderModel = genderToDomain(breedingsModel.genderModel),

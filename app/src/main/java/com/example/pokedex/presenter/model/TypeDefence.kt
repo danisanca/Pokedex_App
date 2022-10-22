@@ -6,9 +6,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TypeDefence(
-    var normal: Float ,
-    var fire: Float ,
-    var water: Float ,
+    var normal: Float,
+    var fire: Float,
+    var water: Float,
     var electric: Float,
     var grass: Float,
     var ice: Float,
@@ -23,11 +23,10 @@ data class TypeDefence(
     var dragon: Float,
     var dark: Float,
     var steel: Float,
-    var fairy: Float
+    var fairy: Float,
 ) : Parcelable
 
-
-fun typeDefenceToDomain(typeDefence:TypeDefenceModel) : TypeDefence {
+fun typeDefenceToDomain(typeDefence: TypeDefenceModel): TypeDefence {
     return TypeDefence(
         normal = typeDefence.normal,
         fire = typeDefence.fire,

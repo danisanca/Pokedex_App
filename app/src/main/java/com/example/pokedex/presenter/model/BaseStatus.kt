@@ -2,7 +2,6 @@ package com.example.pokedex.presenter.model
 
 import android.os.Parcelable
 import com.example.pokedex.domain.model.BaseStatusModel
-import com.example.pokedex.domain.model.BreedingsModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

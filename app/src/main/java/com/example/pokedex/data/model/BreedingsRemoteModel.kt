@@ -1,7 +1,6 @@
 package com.example.pokedex.data.model
 
 import com.example.pokedex.domain.model.BreedingsModel
-import com.example.pokedex.domain.model.PokemonModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
@@ -9,9 +8,10 @@ import kotlinx.serialization.Serializable
 data class BreedingsRemoteModel(
     @SerializedName("eggGroups") val eggGroups: List<String>,
     @SerializedName("gender") val genderModel: GenderRemoteModel,
-    @SerializedName("eggCycles") val eggCyclesModel: EggCycleRemoteModel
+    @SerializedName("eggCycles") val eggCyclesModel: EggCycleRemoteModel,
 )
-fun BreedingsRemoteModel.toDomain() : BreedingsModel {
+
+fun BreedingsRemoteModel.toDomain(): BreedingsModel {
     return BreedingsModel(
         eggGroups = this.eggGroups,
         genderModel = this.genderModel.toDomain(),

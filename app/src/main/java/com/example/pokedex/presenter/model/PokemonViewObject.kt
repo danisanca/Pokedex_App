@@ -1,7 +1,7 @@
 package com.example.pokedex.presenter.model
 
 import android.os.Parcelable
-import com.example.pokedex.domain.model.*
+import com.example.pokedex.domain.model.PokemonModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -34,7 +34,7 @@ data class PokemonViewObject(
         breeding = breedingsToDomain(pokemon.breeding),
         baseStatus = baseStatusToDomain(pokemon.baseStatus),
         typeDefences = typeDefenceToDomain(pokemon.typeDefences),
-        resourcesType = pokemon.types.map {pokemon ->
+        resourcesType = pokemon.types.map { pokemon ->
             PokemonReources.getPokemonType(pokemon)
         },
         mainType = PokemonReources.getPokemonType(pokemon.types[0])

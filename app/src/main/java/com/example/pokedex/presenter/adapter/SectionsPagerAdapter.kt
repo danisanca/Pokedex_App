@@ -14,15 +14,18 @@ private val TAB_TITLES = arrayOf(
     R.string.tab_text_2
 )
 
-class SectionsPagerAdapter(private val context: DetailsFragment, fm: FragmentManager, private val objPoke: PokemonViewObject) : FragmentPagerAdapter(fm,
+class SectionsPagerAdapter(
+    private val context: DetailsFragment,
+    fm: FragmentManager,
+    private val objPoke: PokemonViewObject,
+) : FragmentPagerAdapter(fm,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
-        if(position == 0){
-            return AboutFragment.newInstance(position,objPoke)
-        }
-        else{
-            return StatusFragment.newInstance(position + 1,objPoke)
+        if (position == 0) {
+            return AboutFragment.newInstance(position, objPoke)
+        } else {
+            return StatusFragment.newInstance(position + 1, objPoke)
         }
     }
 

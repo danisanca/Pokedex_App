@@ -11,13 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
-import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentFiltersBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
@@ -42,9 +40,8 @@ class FiltersFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-
         _binding = FragmentFiltersBinding.inflate(layoutInflater)
         genListTypes()
         genListHeight()
@@ -145,6 +142,10 @@ class FiltersFragment : BottomSheetDialogFragment() {
             applyFilters()
             dismiss()
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun Observers() {
@@ -298,7 +299,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
             this.rangeMin = valueRangeMin
             this.rangeMax = valueRangeMax
         }
-        listViewModel.menuFilterSelected(filterModel)
+        listViewModel.selectedMenuFilter(filterModel)
     }
 
     private fun genListTypes() {
@@ -335,7 +336,6 @@ class FiltersFragment : BottomSheetDialogFragment() {
     }
 
     private fun changeColorType(itemId: Int) {
-
         if (itemTypeSelected.contains(itemId)) {
             listTypes.map {
                 if (it.id == itemId) {
@@ -405,7 +405,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
             it.backgroundTintList =
                 context?.let { it1 -> ContextCompat.getColorStateList(it1, R.color.white) }
         }
-        listViewModel.menuResetFilter()
+        listViewModel.resetMenuFilter()
         dismiss()
     }
 
@@ -414,10 +414,5 @@ class FiltersFragment : BottomSheetDialogFragment() {
             itemTypeSelected.add(itemId)
         }
         changeColorType(itemId)
-
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

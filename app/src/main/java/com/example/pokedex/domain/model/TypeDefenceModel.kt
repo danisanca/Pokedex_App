@@ -1,8 +1,5 @@
 package com.example.pokedex.domain.model
 
-import com.example.pokedex.data.model.TypeDefenceRemoteModel
-import com.example.pokedex.presenter.model.TypeDefence
-
 
 data class TypeDefenceModel(
     val normal: Float,

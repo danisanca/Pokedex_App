@@ -16,5 +16,4 @@ class PokedexInterceptor(private val checkNetworkConnection:CheckNetworkConnecti
         }
     }
 
-
 }

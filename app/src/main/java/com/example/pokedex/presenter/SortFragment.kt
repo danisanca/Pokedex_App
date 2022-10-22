@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
-import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentSortBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
@@ -25,12 +24,13 @@ class SortFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentSortBinding.inflate(layoutInflater, container, false)
         genListItemsMenu()
@@ -43,7 +43,7 @@ class SortFragment : BottomSheetDialogFragment() {
         Observers()
         binding.btnSmalllestNumberFirst.setOnClickListener {
             itemSelected = binding.btnSmalllestNumberFirst.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.SORT.SMALLEST,
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
@@ -52,7 +52,7 @@ class SortFragment : BottomSheetDialogFragment() {
         }
         binding.btnHighestNumberFirst.setOnClickListener {
             itemSelected = binding.btnHighestNumberFirst.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.SORT.HIGHEST,
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
@@ -61,7 +61,7 @@ class SortFragment : BottomSheetDialogFragment() {
         }
         binding.btnAToZ.setOnClickListener {
             itemSelected = binding.btnAToZ.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.SORT.A_Z,
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
@@ -70,7 +70,7 @@ class SortFragment : BottomSheetDialogFragment() {
         }
         binding.btnZToA.setOnClickListener {
             itemSelected = binding.btnZToA.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.SORT.Z_A,
                 PokedexConstants.MENUFILTER.SORT_OPTION
             )
@@ -78,6 +78,7 @@ class SortFragment : BottomSheetDialogFragment() {
             dismiss()
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -137,7 +138,6 @@ class SortFragment : BottomSheetDialogFragment() {
                 }
             }
         }
-
     }
 
     private fun genListItemsMenu() {
@@ -146,5 +146,4 @@ class SortFragment : BottomSheetDialogFragment() {
         listButton.add(binding.btnAToZ)
         listButton.add(binding.btnZToA)
     }
-
 }

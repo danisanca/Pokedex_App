@@ -16,7 +16,7 @@ class NetworkModule {
 
     @Provides
     fun providesCheckInternetConnection(
-        @ApplicationContext applicationContext: Context
+        @ApplicationContext applicationContext: Context,
     ) = CheckNetworkConnection(applicationContext)
 
     @Provides
@@ -25,9 +25,7 @@ class NetworkModule {
 
     @Provides
     fun providesServiceProvider(
-        pokedexInterceptor: PokedexInterceptor
+        pokedexInterceptor: PokedexInterceptor,
     ) = ServiceProvider(pokedexInterceptor)
-
-
 
 }

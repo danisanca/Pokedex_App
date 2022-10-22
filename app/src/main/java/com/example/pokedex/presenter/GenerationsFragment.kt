@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.pokedex.R
-import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.FragmentGenerationsBinding
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
@@ -30,12 +28,13 @@ class GenerationsFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL,R.style.BottomSheetDialog)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentGenerationsBinding.inflate(layoutInflater)
         genListItemsMenu()
@@ -49,72 +48,72 @@ class GenerationsFragment : BottomSheetDialogFragment() {
         val layout = binding.bottomSheetLayout
         layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
 
-        binding.boxOneGen.setOnClickListener{
+        binding.boxOneGen.setOnClickListener {
             itemSelected = binding.boxOneGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_1,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxSecondGen.setOnClickListener{
+        binding.boxSecondGen.setOnClickListener {
             itemSelected = binding.boxSecondGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_2,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxThirdGen.setOnClickListener{
+        binding.boxThirdGen.setOnClickListener {
             itemSelected = binding.boxThirdGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_3,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxFourGen.setOnClickListener{
+        binding.boxFourGen.setOnClickListener {
             itemSelected = binding.boxFourGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_4,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxFiveGen.setOnClickListener{
+        binding.boxFiveGen.setOnClickListener {
             itemSelected = binding.boxFiveGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_5,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxSixGen.setOnClickListener{
+        binding.boxSixGen.setOnClickListener {
             itemSelected = binding.boxSixGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_6,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxSevenGen.setOnClickListener{
+        binding.boxSevenGen.setOnClickListener {
             itemSelected = binding.boxSevenGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_7,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
             changeItemMenu(itemSelected)
             dismiss()
         }
-        binding.boxEightGen.setOnClickListener{
+        binding.boxEightGen.setOnClickListener {
             itemSelected = binding.boxEightGen.id
-            listViewModel.menuSelectec(
+            listViewModel.selectedMenu(
                 PokedexConstants.GENERATION.GEN_8,
                 PokedexConstants.MENUFILTER.GENERATION_OPTION
             )
@@ -122,6 +121,11 @@ class GenerationsFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         Observers()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun Observers() {
@@ -166,7 +170,6 @@ class GenerationsFragment : BottomSheetDialogFragment() {
                     }
                 }
             }
-
         }
     }
 
@@ -179,10 +182,5 @@ class GenerationsFragment : BottomSheetDialogFragment() {
         listBoxItems.add(binding.boxSixGen)
         listBoxItems.add(binding.boxSevenGen)
         listBoxItems.add(binding.boxEightGen)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

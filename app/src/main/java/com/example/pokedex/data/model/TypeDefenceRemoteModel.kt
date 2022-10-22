@@ -1,6 +1,5 @@
 package com.example.pokedex.data.model
 
-import com.example.pokedex.domain.model.PokemonModel
 import com.example.pokedex.domain.model.TypeDefenceModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
@@ -24,9 +23,10 @@ data class TypeDefenceRemoteModel(
     @SerializedName("dragon") val dragon: Float,
     @SerializedName("darl") val dark: Float,
     @SerializedName("steel") val steel: Float,
-    @SerializedName("fairy") val fairy: Float
+    @SerializedName("fairy") val fairy: Float,
 )
-fun TypeDefenceRemoteModel.toDomain() : TypeDefenceModel {
+
+fun TypeDefenceRemoteModel.toDomain(): TypeDefenceModel {
     return TypeDefenceModel(
         normal = this.normal,
         fire = this.fire,

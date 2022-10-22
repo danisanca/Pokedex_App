@@ -1,7 +1,6 @@
 package com.example.pokedex.data.model
 
 import com.example.pokedex.domain.model.BaseStatusModel
-import com.example.pokedex.domain.model.PokemonModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
@@ -15,7 +14,7 @@ data class BaseStatusRemoteModel(
     @SerializedName("speed") val speed: List<Int>,
 )
 
-fun BaseStatusRemoteModel.toDomain() : BaseStatusModel {
+fun BaseStatusRemoteModel.toDomain(): BaseStatusModel {
     return BaseStatusModel(
         hp = this.hp,
         attack = this.attack,

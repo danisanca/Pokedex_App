@@ -15,11 +15,10 @@ enum class PokemonReources(
 
     ) : Parcelable {
     BUG_RESOURCES(
-         "bug",
+        "bug",
         R.drawable.ic_bug,
         R.color.typeBug,
         R.color.bkgTypeBug
-
     ),
     DARK_RESOURCES(
         "dark",
@@ -40,7 +39,7 @@ enum class PokemonReources(
         R.color.bkgTypeElectric
     ),
     FAIRY_RESOURCES(
-         "fairy",
+        "fairy",
         R.drawable.ic_fairy,
         R.color.typeFairy,
         R.color.bkgTypeFairy
@@ -64,55 +63,55 @@ enum class PokemonReources(
         R.color.bkgTypeFlying
     ),
     GHOST_RESOURCES(
-         "ghost",
+        "ghost",
         R.drawable.ic_ghost,
         R.color.typeGhost,
         R.color.bkgTypeGhost
     ),
     GRASS_RESOURCES(
-         "grass",
+        "grass",
         R.drawable.ic_grass,
         R.color.typeGrass,
         R.color.bkgTypeGrass
     ),
     GROUND_RESOURCES(
-         "ground",
+        "ground",
         R.drawable.ic_ground,
         R.color.typeGround,
         R.color.bkgTypeGround
     ),
     ICE_RESOURCES(
-         "ice",
+        "ice",
         R.drawable.ic_ice,
         R.color.typeIce,
         R.color.bkgTypeIce
     ),
     NORMAL_RESOURCES(
-         "normal",
+        "normal",
         R.drawable.ic_normal,
         R.color.typeNormal,
         R.color.bkgTypeNormal
     ),
     POISON_RESOURCES(
-       "poison",
+        "poison",
         R.drawable.ic_poison,
         R.color.typePoison,
         R.color.bkgTypePoison
     ),
     PSYCHIC_RESOURCES(
-         "psychic",
+        "psychic",
         R.drawable.ic_psychic,
         R.color.typePsychic,
         R.color.bkgTypePsychic
     ),
     ROCK_RESOURCES(
-         "rock",
+        "rock",
         R.drawable.ic_rock,
         R.color.typeRock,
         R.color.bkgTypeRock
     ),
     STEEL_RESOURCES(
-         "steel",
+        "steel",
         R.drawable.ic_steel,
         R.color.typeSteel,
         R.color.bkgTypeSteel

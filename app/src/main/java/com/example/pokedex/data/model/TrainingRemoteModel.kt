@@ -1,6 +1,5 @@
 package com.example.pokedex.data.model
 
-import com.example.pokedex.domain.model.PokemonModel
 import com.example.pokedex.domain.model.TrainingModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
@@ -12,10 +11,10 @@ data class TrainingRemoteModel(
     @SerializedName("catchRate") val catchRateModel: CatchRateRemoteModel,
     @SerializedName("baseFriendship") val baseFriendshipModel: BaseFriendshipRemoteModel,
     @SerializedName("baseExp") val baseExp: Int,
-    @SerializedName("growthRate") val growthRate: String
+    @SerializedName("growthRate") val growthRate: String,
 )
 
-fun TrainingRemoteModel.toDomain():TrainingModel{
+fun TrainingRemoteModel.toDomain(): TrainingModel {
     return TrainingModel(
         evYield = this.evYield,
         catchRateModel = this.catchRateModel.toDomain(),

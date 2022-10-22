@@ -1,9 +1,6 @@
 package com.example.pokedex.di
 
 import android.content.Context
-import com.example.pokedex.network.CheckNetworkConnection
-import com.example.pokedex.network.PokedexInterceptor
-import com.example.pokedex.network.ServiceProvider
 import com.example.pokedex.presenter.model.SecurityPreferences
 import dagger.Module
 import dagger.Provides
@@ -17,8 +14,7 @@ class PresenterModule {
 
     @Provides
     fun providesSecurityPreferences(
-        @ApplicationContext applicationContext: Context
+        @ApplicationContext applicationContext: Context,
     ) = SecurityPreferences(applicationContext)
-
 
 }
