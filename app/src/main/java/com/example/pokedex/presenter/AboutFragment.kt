@@ -19,11 +19,14 @@ class AboutFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        _binding = FragmentAboutBinding.inflate(layoutInflater, container, false)
         configDataActivity()
-
         return binding.root
     }
+
+
+
+
 
     companion object {
 

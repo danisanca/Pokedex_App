@@ -3,15 +3,19 @@ package com.example.pokedex.presenter
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import coil.load
+import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.presenter.adapter.SectionsPagerAdapter
 import com.example.pokedex.presenter.model.PokemonViewObject
@@ -40,6 +44,7 @@ class DetailsFragment : Fragment() {
         configActivity()
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -47,10 +52,12 @@ class DetailsFragment : Fragment() {
 
     private fun tabBar() {
         val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = SectionsPagerAdapter(this, parentFragmentManager, objPoke)
+        viewPager.adapter = SectionsPagerAdapter(this, childFragmentManager, objPoke)
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
     }
+
+
 
     private fun configActivity() {
         changeNumber(objPoke.id)

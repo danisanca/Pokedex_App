@@ -342,7 +342,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                     it.backgroundTintList = context?.let { it1 ->
                         ContextCompat.getColorStateList(
                             it1,
-                            R.color.backgroudInput
+                            R.color.backgroudSelect
                         )
                     }
                 }
@@ -357,7 +357,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                     it.backgroundTintList = context?.let { it1 ->
                         ContextCompat.getColorStateList(
                             it1,
-                            R.color.backgroudInput
+                            R.color.backgroudSelect
                         )
                     }
                 } else {
@@ -375,7 +375,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                     it.backgroundTintList = context?.let { it1 ->
                         ContextCompat.getColorStateList(
                             it1,
-                            R.color.backgroudInput
+                            R.color.backgroudSelect
                         )
                     }
                 } else {
@@ -410,9 +410,25 @@ class FiltersFragment : BottomSheetDialogFragment() {
     }
 
     private fun addListType(itemId: Int) {
+        println(itemTypeSelected.size)
         if (!itemTypeSelected.contains(itemId)) {
             itemTypeSelected.add(itemId)
+            changeColorType(itemId)
+        }else{
+            listTypes.map {
+                if (it.id == itemId) {
+                    it.backgroundTintList = context?.let { it1 ->
+                        ContextCompat.getColorStateList(
+                            it1,
+                            R.color.white
+                        )
+                    }
+                }
+            }
+            itemTypeSelected.remove(itemId)
         }
-        changeColorType(itemId)
+        println("final")
+        println(itemTypeSelected.size)
     }
+
 }

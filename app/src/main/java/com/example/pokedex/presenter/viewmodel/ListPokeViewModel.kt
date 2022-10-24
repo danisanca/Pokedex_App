@@ -87,8 +87,15 @@ class ListPokeViewModel @Inject constructor(
         } else {
             newList = old as MutableList<PokemonViewObject>
         }
+
         _pokemonList.value = newList
         _viewState.postValue(ViewState.OK)
+    }
+
+    private fun alertFilter(listSize : MutableList<PokemonViewObject>){
+        if(listSize.isEmpty()){
+            _statusMsg.value = "Nenhum Pokemon Encontrado."
+        }
     }
 
     private fun generationFilter(pokemonList: List<PokemonViewObject>) {
@@ -144,6 +151,7 @@ class ListPokeViewModel @Inject constructor(
             }
         }
         _pokemonList.value = newList
+
     }
 
     private fun sortFilter(pokemonList: List<PokemonViewObject>) {
@@ -202,7 +210,7 @@ class ListPokeViewModel @Inject constructor(
                 }
                 newList = newFiltertypesList
             }
-
+            alertFilter(newList)
             _pokemonList.value = newList
         }
     }

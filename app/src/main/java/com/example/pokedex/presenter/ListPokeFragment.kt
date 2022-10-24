@@ -65,8 +65,6 @@ class ListPokeFragment : Fragment() {
         }
         val listener = object : PokeListner {
             override fun onListClick(poke: PokemonViewObject) {
-                val gson = Gson()
-                val listPoke = gson.toJson(poke)
                 val direction =
                     ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(poke)
                 findNavController().navigate(direction)

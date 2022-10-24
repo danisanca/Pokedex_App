@@ -21,7 +21,7 @@ class StatusFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentStatusBinding.inflate(inflater, container, false)
+        _binding = FragmentStatusBinding.inflate(layoutInflater, container, false)
 
         configDataActivity()
         return binding.root
