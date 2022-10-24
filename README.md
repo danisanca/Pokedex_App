@@ -1,6 +1,6 @@
 # Aplicativo Pokédex 🚀
 
-#### Aplicativo consiste na listagem de pokemons a partir de uma api externa sendo possivél aplicar filtros para realizar uma seleção especica caso queira.
+#### Aplicativo consiste na listagem de pokémons a partir de uma api externa sendo possível aplicar filtros para realizar uma seleção especifica caso queira.
 #### Aplicativo em constante processo de melhoria. - 💼💼💼💼💼💼💼
 
 # Conceitos Aplicados 💻
