@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentListPokeBinding
 import com.example.pokedex.presenter.adapter.PokedexAdapter
+import com.example.pokedex.presenter.extensions.navigateWithAnimations
 import com.example.pokedex.presenter.listener.PokeListner
 import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.ViewState
@@ -67,7 +68,7 @@ class ListPokeFragment : Fragment() {
             override fun onListClick(poke: PokemonViewObject) {
                 val direction =
                     ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(poke)
-                findNavController().navigate(direction)
+                findNavController().navigateWithAnimations(direction)
             }
         }
         adapter.attachListener(listener)
