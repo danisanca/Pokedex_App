@@ -33,7 +33,6 @@ class ListPokeFragment : Fragment() {
 
     private lateinit var binding: FragmentListPokeBinding
     private val viewModel: ListPokeViewModel by activityViewModels()
-    private val adapter = PokedexAdapter()
     private lateinit var statePage: ViewState
 
     override fun onCreateView(
@@ -53,7 +52,7 @@ class ListPokeFragment : Fragment() {
             ContextCompat.getColor(requireContext(), R.color.white)))
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
-        binding.recyclerList.adapter = adapter
+
         binding.btnGeneration.setOnClickListener {
             GenerationsFragment().show(parentFragmentManager, "GenerationSheetDialog")
         }
@@ -66,12 +65,9 @@ class ListPokeFragment : Fragment() {
         }
         val listener = object : PokeListner {
             override fun onListClick(poke: PokemonViewObject) {
-                val direction =
-                    ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(poke)
-                findNavController().navigateWithAnimations(direction)
+
             }
         }
-        adapter.attachListener(listener)
 
         binding.editSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -102,13 +98,20 @@ class ListPokeFragment : Fragment() {
     }
 
     private fun setLoadingState() {
-        binding.loading.isVisible = true
+        binding.apply {
+            loading.isVisible = true
+        }
+
     }
 
     private fun setOkState() {
         binding.loading.isVisible = false
         viewModel.pokemonModel.observe(viewLifecycleOwner) {
-            adapter.updatePokedexList(it)
+            binding.recyclerList.adapter = PokedexAdapter(it){pokemon ->
+                val direction =
+                    ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(pokemon)
+                findNavController().navigateWithAnimations(direction)
+            }
         }
     }
 

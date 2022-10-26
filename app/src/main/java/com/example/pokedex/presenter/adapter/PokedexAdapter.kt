@@ -11,14 +11,16 @@ import com.example.pokedex.databinding.RowPokemonListBinding
 import com.example.pokedex.presenter.listener.PokeListner
 import com.example.pokedex.presenter.model.PokemonViewObject
 
-class PokedexAdapter : RecyclerView.Adapter<PokedexAdapter.PokedexViewHolder>() {
-    private var listPokes: List<PokemonViewObject> = arrayListOf()
-    private lateinit var listener: PokeListner
+class PokedexAdapter(
+    private var listPokes: List<PokemonViewObject>,
+    private val onClickRow: (PokemonViewObject) -> Unit,
+) : RecyclerView.Adapter<PokedexAdapter.PokedexViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemBinding = RowPokemonListBinding.inflate(inflater, parent, false)
-        return PokedexViewHolder(itemBinding, parent.context, listener)
+        return PokedexViewHolder(itemBinding, parent.context)
     }
 
     override fun onBindViewHolder(holder: PokedexViewHolder, position: Int) {
@@ -29,20 +31,17 @@ class PokedexAdapter : RecyclerView.Adapter<PokedexAdapter.PokedexViewHolder>() 
         return listPokes.count()
     }
 
-    fun updatePokedexList(list: List<PokemonViewObject>) {
-        listPokes = list
-        notifyDataSetChanged()
-    }
-
-    fun attachListener(pokeListener: PokeListner) {
-        listener = pokeListener
-    }
 
     inner class PokedexViewHolder(
         private val binding: RowPokemonListBinding,
         private val context: Context,
-        val listner: PokeListner,
     ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                onClickRow(listPokes[adapterPosition])
+            }
+        }
+
         fun bindData(poke: PokemonViewObject) {
 
             changeNumber(poke.id)
@@ -51,9 +50,7 @@ class PokedexAdapter : RecyclerView.Adapter<PokedexAdapter.PokedexViewHolder>() 
             changeColor(poke)
             binding.imgPoke.load(poke.image)
 
-            binding.imgPoke.setOnClickListener {
-                listner.onListClick(poke)
-            }
+
         }
 
         fun changeNumber(id: Int) {
