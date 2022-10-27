@@ -17,7 +17,7 @@ class PokedexRepositoryImpl @Inject constructor(
             pokedexService.getPokemons().map {
                 it.toDomain()
             }
-        } catch (ex: HttpException) {
+        } catch (ex: Exception) {
             throw PokedexRepositoryException()
         }
     }
