@@ -1,6 +1,5 @@
 package com.example.pokedex.domain.model
 
-
 data class TypeDefenceModel(
     val normal: Float,
     val fire: Float,
@@ -21,7 +20,3 @@ data class TypeDefenceModel(
     val steel: Float,
     val fairy: Float
 )
-
-
-
-

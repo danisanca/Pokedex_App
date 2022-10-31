@@ -8,14 +8,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.pokedex.databinding.RowPokemonListBinding
-import com.example.pokedex.presenter.listener.PokeListner
 import com.example.pokedex.presenter.model.PokemonViewObject
 
 class PokedexAdapter(
     private var listPokes: List<PokemonViewObject>,
     private val onClickRow: (PokemonViewObject) -> Unit,
 ) : RecyclerView.Adapter<PokedexAdapter.PokedexViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,7 +28,6 @@ class PokedexAdapter(
     override fun getItemCount(): Int {
         return listPokes.count()
     }
-
 
     inner class PokedexViewHolder(
         private val binding: RowPokemonListBinding,
@@ -49,8 +46,6 @@ class PokedexAdapter(
             changeFormatName(poke.types)
             changeColor(poke)
             binding.imgPoke.load(poke.image)
-
-
         }
 
         fun changeNumber(id: Int) {
@@ -104,7 +99,5 @@ class PokedexAdapter(
             binding.constBkgCard.backgroundTintList =
                 ContextCompat.getColorStateList(context, poke.mainType.colorBackgroundType)
         }
-
     }
-
 }

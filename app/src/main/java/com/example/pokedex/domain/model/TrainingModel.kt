@@ -1,6 +1,5 @@
 package com.example.pokedex.domain.model
 
-
 data class TrainingModel(
 
     var evYield: String,
@@ -9,4 +8,3 @@ data class TrainingModel(
     var baseExp: Int,
     var growthRate: String
 )
-

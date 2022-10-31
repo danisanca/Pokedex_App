@@ -40,6 +40,3 @@ data class PokemonViewObject(
         mainType = PokemonReources.getPokemonType(pokemon.types[0])
     )
 }
-
-
-

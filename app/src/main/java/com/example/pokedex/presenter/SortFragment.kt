@@ -14,7 +14,6 @@ import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-
 class SortFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentSortBinding? = null
     private val binding get() = _binding!!

@@ -59,4 +59,14 @@
     <string name="frag_about_gender">Gender</string>
     <string name="frag_about_egg_groups">Egg Groups</string>
     <string name="frag_about_egg_cycle">Egg Cycle</string>
+    <string name="not_found_Poke">Nenhum Pokemon encontrado.</string>
+    <string name="text_detail_meters">m</string>
+    <string name="text_detail_Kilo">Kg</string>
+    <string name="text_detail_male">\"♂ \"</string>
+    <string name="text_detail_female">\"♀ \"</string>
+    <string name="type_not_found_filter_fragment">Not Found</string>
+    <string name="weight_pokemon_not_found_filter_fragment">Pokemon com esse peso não encontrado</string>
+    <string name="height_pokemon_not_found_filter_fragment">Pokemon com essa altura não encontrado</string>
+    <string name="failed_to_retrieve_data">Erro ao tentar recuperar</string>
+    <string name="try_again">Tentar novamente</string>
 </resources>

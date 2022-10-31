@@ -48,5 +48,3 @@ fun typeDefenceToDomain(typeDefence: TypeDefenceModel): TypeDefence {
         fairy = typeDefence.fairy
     )
 }
-
-

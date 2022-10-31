@@ -1,6 +1,5 @@
 package com.example.pokedex.domain.model
 
-
 data class BaseStatusModel(
     val hp: List<Int>,
     val attack: List<Int>,
@@ -9,7 +8,3 @@ data class BaseStatusModel(
     val specialDefence: List<Int>,
     val speed: List<Int>,
 )
-
-
-
-

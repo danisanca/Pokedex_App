@@ -2,6 +2,15 @@ package com.example.pokedex.presenter.constants
 
 class PokedexConstants private constructor() {
 
+    object SHAREDPREFERENCES {
+        const val DATASTORAGE = "Data"
+    }
+
+    object RANGEPOKEMONS {
+        const val FIRST = 1f
+        const val LAST = 817f
+    }
+
     object MENUFILTER {
         const val GENERATION_OPTION = "generationOption"
         const val SORT_OPTION = "sortOption"

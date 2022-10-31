@@ -1,9 +1,12 @@
 package com.example.pokedex.presenter.viewmodel
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.R
 import com.example.pokedex.domain.GetPokemonsUseCase
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
@@ -19,6 +22,7 @@ import javax.inject.Inject
 class ListPokeViewModel @Inject constructor(
     private val getPokemonsUseCase: GetPokemonsUseCase,
     private val securityPreferences: SecurityPreferences,
+    private val application: Application
 ) : ViewModel() {
 
     private val _pokemonList = MutableLiveData<List<PokemonViewObject>>()
@@ -53,13 +57,13 @@ class ListPokeViewModel @Inject constructor(
             }.onFailure {
                 _viewState.postValue(ViewState.ERROR)
             }
-            pokemonModel.value?.let { securityPreferences.store("Data", it) }
+            pokemonModel.value?.let { securityPreferences.store(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE, it) }
         }
     }
 
     fun listPokemon() {
         _viewState.postValue(ViewState.LOADING)
-        val dataList = securityPreferences.get("Data")
+        val dataList = securityPreferences.get(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE)
 
         if (dataList == null) {
             getPokemons()
@@ -71,7 +75,7 @@ class ListPokeViewModel @Inject constructor(
 
     fun searchPokeList(namePoke: String) {
         var newList: MutableList<PokemonViewObject>
-        val old: List<PokemonViewObject> = securityPreferences.get("Data")
+        val old: List<PokemonViewObject> = securityPreferences.get(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE)
         _viewState.postValue(ViewState.LOADING)
 
         if (namePoke != "") {
@@ -92,9 +96,9 @@ class ListPokeViewModel @Inject constructor(
         _viewState.postValue(ViewState.OK)
     }
 
-    private fun alertFilter(listSize : MutableList<PokemonViewObject>){
-        if(listSize.isEmpty()){
-            _statusMsg.value = "Nenhum Pokemon Encontrado."
+    private fun alertFilter(listSize: MutableList<PokemonViewObject>) {
+        if (listSize.isEmpty()) {
+            _statusMsg.value = application.getString(R.string.not_found_Poke)
         }
     }
 
@@ -278,5 +282,4 @@ class ListPokeViewModel @Inject constructor(
         _optionsSelectedfilters.value = filterModel
         filterModel()
     }
-
 }

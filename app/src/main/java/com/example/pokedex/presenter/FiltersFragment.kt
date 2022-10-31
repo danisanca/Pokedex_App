@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -17,7 +18,6 @@ import com.example.pokedex.presenter.model.FilterModel
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
 
 class FiltersFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentFiltersBinding? = null
@@ -143,6 +143,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
             dismiss()
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -207,7 +208,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                             } else if (it == PokedexConstants.FILTERS.TYPE.ICE) {
                                 itemTypeSelected.add(binding.imgIcIce.id)
                             } else {
-                                println("Not Found")
+                                println(getString(R.string.type_not_found_filter_fragment))
                             }
                         }
                     }
@@ -237,7 +238,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                 binding.imgIcShort.id -> heightValue = "short"
                 binding.imgIcMedium.id -> heightValue = "medium"
                 binding.imgIcTall.id -> heightValue = "tall"
-                else -> null
+                else -> Toast.makeText(context,R.string.height_pokemon_not_found_filter_fragment,Toast.LENGTH_SHORT).show()
             }
         }
         if (itemWeightSelected != null) {
@@ -245,7 +246,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                 binding.imgIcLightWei.id -> weighttValue = "light"
                 binding.imgIcNormalWei.id -> weighttValue = "normal"
                 binding.imgIcHeavyWei.id -> weighttValue = "heavy"
-                else -> null
+                else ->  Toast.makeText(context,R.string.weight_pokemon_not_found_filter_fragment,Toast.LENGTH_SHORT).show()
             }
         }
         if (itemTypeSelected.isNotEmpty()) {
@@ -287,7 +288,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
                 } else if (it == binding.imgIcIce.id) {
                     typeValue.add(PokedexConstants.FILTERS.TYPE.ICE)
                 } else {
-                    println("Not Found")
+                    Toast.makeText(context,R.string.type_not_found_filter_fragment,Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -414,7 +415,7 @@ class FiltersFragment : BottomSheetDialogFragment() {
         if (!itemTypeSelected.contains(itemId)) {
             itemTypeSelected.add(itemId)
             changeColorType(itemId)
-        }else{
+        } else {
             listTypes.map {
                 if (it.id == itemId) {
                     it.backgroundTintList = context?.let { it1 ->
@@ -427,8 +428,6 @@ class FiltersFragment : BottomSheetDialogFragment() {
             }
             itemTypeSelected.remove(itemId)
         }
-        println("final")
-        println(itemTypeSelected.size)
     }
 
 }

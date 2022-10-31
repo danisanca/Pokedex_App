@@ -24,5 +24,3 @@ fun BaseStatusRemoteModel.toDomain(): BaseStatusModel {
         speed = this.speed
     )
 }
-
-

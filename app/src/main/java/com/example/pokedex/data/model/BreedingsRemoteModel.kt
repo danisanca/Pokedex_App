@@ -18,5 +18,3 @@ fun BreedingsRemoteModel.toDomain(): BreedingsModel {
         eggCyclesModel = this.eggCyclesModel.toDomain()
     )
 }
-
-

@@ -16,4 +16,3 @@ fun EggCycleRemoteModel.toDomain(): EggCycleModel {
         text = this.text
     )
 }
-

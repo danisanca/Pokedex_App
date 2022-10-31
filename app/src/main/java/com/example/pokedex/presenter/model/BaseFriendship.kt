@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class BaseFriendship(
     val value: Float,
-    val text: String
+    val text: String,
 ) : Parcelable
 
-fun baseFriendshipToDomain(baseFriendship: BaseFriendshipModel) : BaseFriendship {
+fun baseFriendshipToDomain(baseFriendship: BaseFriendshipModel): BaseFriendship {
     return BaseFriendship(
         value = baseFriendship.value,
         text = baseFriendship.text

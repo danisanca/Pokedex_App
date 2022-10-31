@@ -10,7 +10,6 @@ import com.example.pokedex.databinding.FragmentStatusBinding
 import com.example.pokedex.presenter.model.PokemonViewObject
 import java.text.DecimalFormat
 
-
 class StatusFragment : Fragment() {
 
     private var _binding: FragmentStatusBinding? = null

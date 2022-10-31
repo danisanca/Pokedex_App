@@ -16,4 +16,3 @@ fun CatchRateRemoteModel.toDomain(): CatchRateModel {
         text = this.text
     )
 }
-

@@ -16,5 +16,3 @@ fun GenderRemoteModel.toDomain(): GenderModel {
         female = this.female
     )
 }
-
-

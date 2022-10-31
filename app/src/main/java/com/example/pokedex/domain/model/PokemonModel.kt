@@ -1,6 +1,5 @@
 package com.example.pokedex.domain.model
 
-
 data class  PokemonModel(
     val id: Int,
     val name: String,
@@ -15,7 +14,3 @@ data class  PokemonModel(
     val baseStatus: BaseStatusModel,
     val typeDefences: TypeDefenceModel
 )
-
-
-
-

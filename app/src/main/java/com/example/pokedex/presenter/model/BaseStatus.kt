@@ -11,10 +11,10 @@ data class BaseStatus(
     val defence: List<Int>,
     val specialAttack: List<Int>,
     val specialDefence: List<Int>,
-    val speed: List<Int>
+    val speed: List<Int>,
 ) : Parcelable
 
-fun baseStatusToDomain(baseStatusModel: BaseStatusModel) : BaseStatus {
+fun baseStatusToDomain(baseStatusModel: BaseStatusModel): BaseStatus {
     return BaseStatus(
         hp = baseStatusModel.hp,
         attack = baseStatusModel.attack,
@@ -24,6 +24,3 @@ fun baseStatusToDomain(baseStatusModel: BaseStatusModel) : BaseStatus {
         speed = baseStatusModel.speed
     )
 }
-
-
-

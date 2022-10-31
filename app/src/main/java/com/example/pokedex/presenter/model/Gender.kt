@@ -16,5 +16,3 @@ fun genderToDomain(genderModel: GenderModel): Gender {
         female = genderModel.female
     )
 }
-
-

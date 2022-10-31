@@ -21,11 +21,8 @@ import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentListPokeBinding
 import com.example.pokedex.presenter.adapter.PokedexAdapter
 import com.example.pokedex.presenter.extensions.navigateWithAnimations
-import com.example.pokedex.presenter.listener.PokeListner
-import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.ViewState
 import com.example.pokedex.presenter.viewmodel.ListPokeViewModel
-import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,11 +59,6 @@ class ListPokeFragment : Fragment() {
         binding.btnSort.setOnClickListener {
             SortFragment().show(parentFragmentManager, "BottomSheetDialog")
 
-        }
-        val listener = object : PokeListner {
-            override fun onListClick(poke: PokemonViewObject) {
-
-            }
         }
 
         binding.editSearch.addTextChangedListener(object : TextWatcher {
@@ -107,7 +99,7 @@ class ListPokeFragment : Fragment() {
     private fun setOkState() {
         binding.loading.isVisible = false
         viewModel.pokemonModel.observe(viewLifecycleOwner) {
-            binding.recyclerList.adapter = PokedexAdapter(it){pokemon ->
+            binding.recyclerList.adapter = PokedexAdapter(it) { pokemon ->
                 val direction =
                     ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(pokemon)
                 findNavController().navigateWithAnimations(direction)
@@ -116,8 +108,8 @@ class ListPokeFragment : Fragment() {
     }
 
     private fun setErrorState() {
-        AlertDialog.Builder(requireContext()).setMessage("Erro ao tentar recuperar")
-            .setPositiveButton("Tentar novamente", object : DialogInterface.OnClickListener {
+        AlertDialog.Builder(requireContext()).setMessage(getString(R.string.failed_to_retrieve_data))
+            .setPositiveButton(getString(R.string.try_again), object : DialogInterface.OnClickListener {
                 override fun onClick(p0: DialogInterface?, p1: Int) {
                     binding.loading.isVisible = true
                     viewModel.listPokemon()

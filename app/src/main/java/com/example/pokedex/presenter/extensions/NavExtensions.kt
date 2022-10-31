@@ -12,6 +12,6 @@ private val navOptions = NavOptions.Builder()
     .setPopExitAnim(R.anim.slide_out_right)
     .build()
 
-fun NavController.navigateWithAnimations(destinationId:NavDirections){
+fun NavController.navigateWithAnimations(destinationId: NavDirections) {
     this.navigate(destinationId, navOptions)
 }

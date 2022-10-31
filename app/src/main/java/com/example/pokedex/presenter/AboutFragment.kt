@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentAboutBinding
 import com.example.pokedex.presenter.model.PokemonViewObject
-
 
 class AboutFragment : Fragment() {
 
@@ -23,10 +23,6 @@ class AboutFragment : Fragment() {
         configDataActivity()
         return binding.root
     }
-
-
-
-
 
     companion object {
 
@@ -56,8 +52,8 @@ class AboutFragment : Fragment() {
             textPokeDescription.text = poke.description
             context?.let { textPokedexData.setTextColor(it.getColor(poke.resourcesType[0].colorType)) }
             textSpeciesValue.text = poke.species
-            textHeightValue.text = poke.height.toString() + "m"
-            textWeightValue.text = poke.weight.toString() + "Kg"
+            textHeightValue.text = poke.height.toString() + getString(R.string.text_detail_meters)
+            textWeightValue.text = poke.weight.toString() + getString(R.string.text_detail_Kilo)
             context?.let { textTraining.setTextColor(it.getColor(poke.resourcesType[0].colorType)) }
             textEVYieldValue.text = poke.training.evYield
             textCatchRateTextValue.text = poke.training.catchRate.value.toString()
@@ -67,11 +63,10 @@ class AboutFragment : Fragment() {
             textBaseExpValue.text = poke.training.baseExp.toString()
             textGrowthRateValue.text = poke.training.growthRate
             context?.let { textBreeding.setTextColor(it.getColor(poke.resourcesType[0].colorType)) }
-
             textEggCycleValue.text = poke.breeding.eggCyclesModel.value.toString()
             textEggCycleTextValue.text = poke.breeding.eggCyclesModel.text
-            textMaleDescription.text = "♂ " + poke.breeding.genderModel.male.toString() + "%, "
-            textFemaleDescription.text = "♀ " + poke.breeding.genderModel.female + "%"
+            textMaleDescription.text = getString(R.string.text_detail_male) + poke.breeding.genderModel.male.toString() + "%, "
+            textFemaleDescription.text = getString(R.string.text_detail_female) + poke.breeding.genderModel.female + "%"
         }
 
         if (poke.breeding.eggGroups.size > 1) {

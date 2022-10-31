@@ -16,4 +16,3 @@ fun catchRateToDomain(catchRateModel: CatchRateModel): CatchRate {
         text = catchRateModel.text
     )
 }
-
