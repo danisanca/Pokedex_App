@@ -1,10 +1,10 @@
-package com.example.pokedex.data.model
+package com.example.pokedex.domain.model
 
 import kotlin.random.Random
 
 object BaseFriendshipModelDummy {
 
-    fun getBaseFriendshipModelDummy() = BaseFriendshipRemoteModel(
+    fun getBaseFriendshipModelDummy() = BaseFriendshipModel(
         value = Random.nextFloat(),
         text = "this.text"
     )

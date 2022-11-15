@@ -98,7 +98,7 @@ class ListPokeFragment : Fragment() {
 
     private fun setOkState() {
         binding.loading.isVisible = false
-        viewModel.pokemonModel.observe(viewLifecycleOwner) {
+        viewModel.pokemonList.observe(viewLifecycleOwner) {
             binding.recyclerList.adapter = PokedexAdapter(it) { pokemon ->
                 val direction =
                     ListPokeFragmentDirections.actionListPokeFragmentToDetailsFragment(pokemon)

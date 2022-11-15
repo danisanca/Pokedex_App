@@ -18,8 +18,8 @@ data class PokemonViewObject(
     val breeding: Breedings,
     val baseStatus: BaseStatus,
     val typeDefences: TypeDefence,
-    val resourcesType: List<PokemonReources>,
-    val mainType: PokemonReources,
+    val resourcesType: List<PokemonResources>,
+    val mainType: PokemonResources,
 ) : Parcelable {
     constructor(pokemon: PokemonModel) : this(
         id = pokemon.id,
@@ -35,8 +35,8 @@ data class PokemonViewObject(
         baseStatus = baseStatusToDomain(pokemon.baseStatus),
         typeDefences = typeDefenceToDomain(pokemon.typeDefences),
         resourcesType = pokemon.types.map { pokemon ->
-            PokemonReources.getPokemonType(pokemon)
+            PokemonResources.getPokemonType(pokemon)
         },
-        mainType = PokemonReources.getPokemonType(pokemon.types[0])
+        mainType = PokemonResources.getPokemonType(pokemon.types[0])
     )
 }

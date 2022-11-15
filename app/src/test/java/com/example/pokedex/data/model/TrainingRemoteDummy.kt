@@ -6,8 +6,8 @@ object TrainingRemoteDummy {
 
     fun getTrainingRemoteDummy()  = TrainingRemoteModel(
         evYield = "",
-        catchRateModel = CatchRateModelDummy.getCatchRateDummy(),
-        baseFriendshipModel = BaseFriendshipModelDummy.getBaseFriendshipModelDummy(),
+        catchRateModel = CatchRateRemoteModelDummy.getCatchRateDummy(),
+        baseFriendshipModel = BaseFriendshipRemoteModelDummy.getBaseFriendshipModelDummy(),
         baseExp = Random.nextInt(),
         growthRate = ""
     )

@@ -1,12 +1,12 @@
 package com.example.pokedex.presenter.viewmodel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.R
+import com.example.pokedex.di.DispatcherIo
 import com.example.pokedex.domain.GetPokemonsUseCase
 import com.example.pokedex.presenter.constants.PokedexConstants
 import com.example.pokedex.presenter.model.FilterModel
@@ -14,19 +14,20 @@ import com.example.pokedex.presenter.model.PokemonViewObject
 import com.example.pokedex.presenter.model.SecurityPreferences
 import com.example.pokedex.presenter.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ListPokeViewModel @Inject constructor(
+    @DispatcherIo private val dispatcher:CoroutineDispatcher,
     private val getPokemonsUseCase: GetPokemonsUseCase,
     private val securityPreferences: SecurityPreferences,
     private val application: Application
 ) : ViewModel() {
 
     private val _pokemonList = MutableLiveData<List<PokemonViewObject>>()
-    val pokemonModel: LiveData<List<PokemonViewObject>> = _pokemonList
+    val pokemonList: LiveData<List<PokemonViewObject>> = _pokemonList
 
     private val _statusMsg = MutableLiveData<String>()
     val statusMsg: LiveData<String> = _statusMsg
@@ -48,7 +49,7 @@ class ListPokeViewModel @Inject constructor(
 
     fun getPokemons() {
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             getPokemonsUseCase().onSuccess { pokemons ->
                 _pokemonList.postValue(pokemons.map { pokemon ->
                     PokemonViewObject(pokemon)
@@ -57,7 +58,7 @@ class ListPokeViewModel @Inject constructor(
             }.onFailure {
                 _viewState.postValue(ViewState.ERROR)
             }
-            pokemonModel.value?.let { securityPreferences.store(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE, it) }
+            pokemonList.value?.let { securityPreferences.store(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE, it) }
         }
     }
 

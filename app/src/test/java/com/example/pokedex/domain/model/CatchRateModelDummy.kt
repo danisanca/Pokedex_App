@@ -1,10 +1,10 @@
-package com.example.pokedex.data.model
+package com.example.pokedex.domain.model
 
 import kotlin.random.Random
 
 object CatchRateModelDummy {
 
-    fun getCatchRateDummy() = CatchRateRemoteModel(
+    fun getCatchRateDummy() = CatchRateModel(
         value = Random.nextInt(),
         text = "this.text"
     )

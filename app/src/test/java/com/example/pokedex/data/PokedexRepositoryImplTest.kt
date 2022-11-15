@@ -17,27 +17,27 @@ class PokedexRepositoryImplTest {
     private lateinit var pokedexRepositoryImpl: PokedexRepositoryImpl
 
     @MockK
-    lateinit var pokedexService:PokedexAPI
+    lateinit var pokedexService: PokedexAPI
 
     @Before
-    fun setup(){
+    fun setup() {
         MockKAnnotations.init(this)
         pokedexRepositoryImpl = PokedexRepositoryImpl(pokedexService)
     }
 
     @Test
-    fun `getPoemons return success with a list of pokemons` () = runBlocking{
+    fun `getPokemons return success with a list of pokemons`() = runBlocking {
         //GIVEN
         coEvery { pokedexService.getPokemons() } returns
                 PokemonRemoteDummy.getListPokemonRemote()
         //WHEN
-            val result = pokedexRepositoryImpl.getPokemons()
+        val result = pokedexRepositoryImpl.getPokemons()
         //THEN
         Assert.assertFalse(result.isEmpty())
     }
 
     @Test(expected = PokedexRepositoryException::class)
-    fun `getMovies throws generic exception` () = runBlocking {
+    fun `getMovies throws generic exception`() = runBlocking {
         //GIVEN
         coEvery { pokedexService.getPokemons() } throws Exception()
         //WHEN

@@ -7,13 +7,14 @@ import com.example.pokedex.R
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-enum class PokemonReources(
+enum class PokemonResources(
     val type: String,
     @DrawableRes val icon: Int,
     @ColorRes val colorType: Int,
     @ColorRes val colorBackgroundType: Int,
 
     ) : Parcelable {
+
     BUG_RESOURCES(
         "bug",
         R.drawable.ic_bug,
