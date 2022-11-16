@@ -4,9 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.pokedex.R
 import com.example.pokedex.databinding.RowPokemonListBinding
 import com.example.pokedex.presenter.model.PokemonViewObject
 
@@ -43,7 +45,7 @@ class PokedexAdapter(
 
             changeNumber(poke.id)
             binding.textPokeName.text = poke.name.replaceFirstChar { it.uppercase() }
-            changeFormatName(poke.types)
+            changeFormatName(poke)
             changeColor(poke)
             binding.imgPoke.load(poke.image)
         }
@@ -59,14 +61,14 @@ class PokedexAdapter(
             }
         }
 
-        fun changeFormatName(types: List<String>) {
-            val sizeList = types.size
+        fun changeFormatName(poke: PokemonViewObject) {
+            val sizeList = poke.types.size
 
             if (sizeList == 2) {
-                binding.typeOne.text = types[0].replaceFirstChar { it.uppercase() }
-                binding.typeTwo.text = types[1].replaceFirstChar { it.uppercase() }
+                binding.typeOne.text = context.getString(poke.resourcesType[0].type)
+                binding.typeTwo.text = context.getString(poke.resourcesType[1].type)
             } else {
-                binding.typeOne.text = types[0].replaceFirstChar { it.uppercase() }
+                binding.typeOne.text = context.getString(poke.resourcesType[0].type)
             }
         }
 

@@ -3,6 +3,7 @@ package com.example.pokedex.presenter.constants
 class PokedexConstants private constructor() {
 
     object SHAREDPREFERENCES {
+        const val SHARED = "pokedexShared"
         const val DATASTORAGE = "Data"
     }
 

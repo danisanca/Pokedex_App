@@ -66,7 +66,7 @@ class ListPokeViewModel @Inject constructor(
         _viewState.postValue(ViewState.LOADING)
         val dataList = securityPreferences.get(PokedexConstants.SHAREDPREFERENCES.DATASTORAGE)
 
-        if (dataList == null) {
+        if (dataList.isEmpty()) {
             getPokemons()
         } else {
             _pokemonList.value = dataList

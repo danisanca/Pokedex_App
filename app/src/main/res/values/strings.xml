@@ -69,4 +69,25 @@
     <string name="height_pokemon_not_found_filter_fragment">Pokemon com essa altura não encontrado</string>
     <string name="failed_to_retrieve_data">Erro ao tentar recuperar</string>
     <string name="try_again">Tentar novamente</string>
+
+    <!-- Types Pokes -->
+    <string name="Bug_Name_Resources">Bug</string>
+    <string name="Dark_Name_Resources">Dark</string>
+    <string name="Dragon_Name_Resources">Dragon</string>
+    <string name="Electric_Name_Resources">Electric</string>
+    <string name="Fairy_Name_Resources">Fairy</string>
+    <string name="Fighting_Name_Resources">Fighting</string>
+    <string name="Fire_Name_Resources">Fire</string>
+    <string name="Flying_Name_Resources">Flying</string>
+    <string name="Ghost_Name_Resources">Ghost</string>
+    <string name="Grass_Name_Resources">Grass</string>
+    <string name="Ground_Name_Resources">Ground</string>
+    <string name="Ice_Name_Resources">Ice</string>
+    <string name="Normal_Name_Resources">Normal</string>
+    <string name="Poison_Name_Resources">Poison</string>
+    <string name="Psychic_Name_Resources">Psychic</string>
+    <string name="Rock_Name_Resources">Rock</string>
+    <string name="Steel_Name_Resources">Steel</string>
+    <string name="Water_Name_Resources">Water</string>
+
 </resources>

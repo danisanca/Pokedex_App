@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import coil.load
+import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.presenter.adapter.SectionsPagerAdapter
 import com.example.pokedex.presenter.model.PokemonViewObject
@@ -56,7 +57,7 @@ class DetailsFragment : Fragment() {
         changeNumber(objPoke.id)
         binding.textPokeNameDetails.text = objPoke.name.replaceFirstChar { it.uppercase() }
         binding.imgPokeDetails.load(objPoke.image)
-        changeNameType(objPoke.types)
+        changeNameType(objPoke)
         changeColor(objPoke)
         (activity as AppCompatActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(
             ContextCompat.getColor(requireContext(), objPoke.resourcesType[0].colorBackgroundType)))
@@ -72,14 +73,14 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    fun changeNameType(types: List<String>) {
-        val sizeList = types.size
+    fun changeNameType(poke: PokemonViewObject) {
+        val sizeList = poke.types.size
 
         if (sizeList == 2) {
-            binding.typeOneDetails.text = types[0].replaceFirstChar { it.uppercase() }
-            binding.typeTwoDetails.text = types[1].replaceFirstChar { it.uppercase() }
+            binding.typeOneDetails.text = getString(poke.resourcesType[0].type)
+            binding.typeTwoDetails.text = getString(poke.resourcesType[1].type)
         } else {
-            binding.typeOneDetails.text = types[0].replaceFirstChar { it.uppercase() }
+            binding.typeOneDetails.text = getString(poke.resourcesType[0].type)
         }
     }
 
